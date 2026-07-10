@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Composio App Research — 100 Apps Analyzed</title>
+<style>
+:root {
+  --bg: #fafbfc; --bg2: #ffffff; --fg: #1a1a2e; --fg2: #4a5568; --border: #e2e8f0;
+  --accent: #6366f1; --accent-soft: #eef2ff; --green: #10b981; --green-soft: #d1fae5;
+  --yellow: #f59e0b; --yellow-soft: #fef3c7; --red: #ef4444; --red-soft: #fee2e2;
+  --purple: #8b5cf6; --purple-soft: #ede9fe;
+  --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.08);
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+@media (prefers-color-scheme:dark) {
+  :root { --bg:#0b1121; --bg2:#151d33; --fg:#e2e8f0; --fg2:#94a3b8; --border:#1e293b;
+    --accent-soft:#1e1b4b; --green-soft:#064e3b; --yellow-soft:#451a03; --red-soft:#450a0a; --purple-soft:#2e1065;
+    --shadow:0 1px 3px rgba(0,0,0,.3); --shadow-lg:0 10px 25px rgba(0,0,0,.4); }
+}
+[data-theme="dark"] { --bg:#0b1121; --bg2:#151d33; --fg:#e2e8f0; --fg2:#94a3b8; --border:#1e293b;
+  --accent-soft:#1e1b4b; --green-soft:#064e3b; --yellow-soft:#451a03; --red-soft:#450a0a; --purple-soft:#2e1065;
+  --shadow:0 1px 3px rgba(0,0,0,.3); --shadow-lg:0 10px 25px rgba(0,0,0,.4); }
+[data-theme="light"] { --bg:#fafbfc; --bg2:#ffffff; --fg:#1a1a2e; --fg2:#4a5568; --border:#e2e8f0;
+  --accent-soft:#eef2ff; --green-soft:#d1fae5; --yellow-soft:#fef3c7; --red-soft:#fee2e2; --purple-soft:#ede9fe;
+  --shadow:0 1px 3px rgba(0,0,0,.06); --shadow-lg:0 10px 25px rgba(0,0,0,.08); }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--fg); line-height:1.6; }
+.wrap { max-width:1300px; margin:0 auto; padding:0 1.5rem; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* Header */
+.hero { padding:3rem 0 2rem; text-align:center; border-bottom:1px solid var(--border); }
+.hero h1 { font-size:2.2rem; font-weight:800; letter-spacing:-.02em;
+  background:linear-gradient(135deg,var(--accent),var(--purple));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero p { color:var(--fg2); margin:.5rem 0 0; font-size:1.05rem; }
+.theme-btn { position:fixed; top:1rem; right:1rem; z-index:999; background:var(--bg2); border:1px solid var(--border);
+  border-radius:50%; width:40px; height:40px; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow); transition:.2s; }
+.theme-btn:hover { transform:scale(1.1); }
+
+/* Stats */
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; margin:2rem 0; }
+.stat { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem; text-align:center; box-shadow:var(--shadow); }
+.stat-val { font-size:1.8rem; font-weight:800; color:var(--accent); }
+.stat-val.green { color:var(--green); }
+.stat-val.purple { color:var(--purple); }
+.stat-label { font-size:.75rem; color:var(--fg2); margin-top:.25rem; text-transform:uppercase; letter-spacing:.05em; }
+
+/* Sections */
+section { margin:3rem 0; }
+.section-title { font-size:1.4rem; font-weight:700; margin-bottom:1.5rem; display:flex; align-items:center; gap:.5rem; }
+.section-title::before { content:''; display:block; width:4px; height:24px; background:var(--accent); border-radius:2px; }
+
+/* Cards grid */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); }
+.card h3 { font-size:1rem; margin-bottom:.75rem; }
+
+/* Charts */
+.chart-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem; margin:1.5rem 0; }
+.chart-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); }
+.chart-card h3 { font-size:.9rem; font-weight:600; margin-bottom:1rem; color:var(--fg2); text-transform:uppercase; letter-spacing:.03em; }
+.bar-row { display:flex; align-items:center; gap:.5rem; margin:.4rem 0; }
+.bar-label { width:80px; font-size:.8rem; text-align:right; color:var(--fg2); flex-shrink:0; }
+.bar-track { flex:1; height:24px; background:var(--border); border-radius:6px; overflow:hidden; position:relative; }
+.bar-fill { height:100%; border-radius:6px; transition:width .5s ease; }
+.bar-val { position:absolute; right:8px; top:50%; transform:translateY(-50%); font-size:.7rem; font-weight:600; color:var(--fg); }
+.donut-wrap { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+.donut-legend { display:flex; flex-direction:column; gap:.5rem; }
+.legend-item { display:flex; align-items:center; gap:.5rem; font-size:.85rem; }
+.legend-dot { width:12px; height:12px; border-radius:50%; }
+
+/* Gap cards */
+.gap-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:.75rem; }
+.gap-card { background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:.75rem 1rem;
+  display:flex; flex-direction:column; gap:.25rem; }
+.gap-card strong { font-size:.85rem; }
+
+/* Blockers */
+.blocker-row { display:flex; align-items:center; gap:.75rem; margin:.5rem 0; }
+.blocker-name { width:180px; font-size:.8rem; color:var(--fg2); flex-shrink:0; text-align:right; }
+.blocker-bar { height:20px; background:linear-gradient(90deg,var(--red),var(--yellow)); border-radius:4px; min-width:4px; }
+.blocker-count { font-size:.75rem; font-weight:600; }
+
+/* Metrics */
+.metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin:1rem 0; }
+.metric { text-align:center; }
+.metric-num { font-size:1.5rem; font-weight:800; }
+.metric-label { font-size:.7rem; color:var(--fg2); text-transform:uppercase; }
+
+/* Table */
+.table-section { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+.toolbar { display:flex; gap:.5rem; flex-wrap:wrap; padding:1rem 1.5rem; border-bottom:1px solid var(--border); align-items:center; }
+.toolbar select, .toolbar input { padding:.5rem .75rem; border:1px solid var(--border); border-radius:8px; background:var(--bg);
+  color:var(--fg); font-size:.8rem; outline:none; }
+.toolbar select:focus, .toolbar input:focus { border-color:var(--accent); }
+.toolbar .count { margin-left:auto; font-size:.8rem; color:var(--fg2); }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:.8rem; }
+th { padding:.6rem .75rem; text-align:left; background:var(--bg); border-bottom:2px solid var(--border);
+  font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:var(--fg2); cursor:pointer; white-space:nowrap; user-select:none; }
+th:hover { color:var(--accent); }
+td { padding:.6rem .75rem; border-bottom:1px solid var(--border); vertical-align:top; }
+tr:hover { background:var(--accent-soft); }
+.sub { font-size:.7rem; color:var(--fg2); }
+.center { text-align:center; }
+.icon { font-weight:700; }
+.icon.green { color:var(--green); }
+.icon.red { color:var(--red); }
+.icon.dim { color:var(--border); }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:.65rem; font-weight:600; margin:1px; white-space:nowrap; }
+.badge-auth { background:var(--accent-soft); color:var(--accent); }
+.cat-pill { background:var(--purple-soft); color:var(--purple); padding:2px 8px; border-radius:10px; font-size:.65rem; font-weight:600; white-space:nowrap; }
+.verdict-pill { padding:3px 10px; border-radius:10px; font-size:.7rem; font-weight:600; white-space:nowrap; }
+.verdict-pill.ready { background:var(--green-soft); color:var(--green); }
+.verdict-pill.caveat { background:var(--yellow-soft); color:var(--yellow); }
+.verdict-pill.blocked { background:var(--red-soft); color:var(--red); }
+.conf-high { color:var(--green); font-weight:600; }
+.conf-mid { color:var(--yellow); font-weight:600; }
+.conf-low { color:var(--red); font-weight:600; }
+.links { font-size:.7rem; white-space:nowrap; }
+.links a { margin-right:.5rem; }
+
+/* Agent section */
+.agent-card { background:linear-gradient(135deg,var(--accent-soft),var(--purple-soft)); border:1px solid var(--border);
+  border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); }
+.agent-card h3 { margin:.75rem 0 .5rem; font-size:.95rem; }
+.agent-card ul { padding-left:1.2rem; font-size:.85rem; color:var(--fg2); }
+.agent-card li { margin:.3rem 0; }
+.agent-card code { background:var(--bg); padding:2px 6px; border-radius:4px; font-family:var(--mono); font-size:.75rem; }
+
+.note { font-size:.8rem; color:var(--fg2); font-style:italic; }
+.dim { color:var(--fg2); }
+
+footer { text-align:center; padding:3rem 0; color:var(--fg2); font-size:.75rem; border-top:1px solid var(--border); margin-top:3rem; }
+
+@media (max-width:768px) {
+  .hero h1 { font-size:1.5rem; }
+  .stats { grid-template-columns:repeat(2,1fr); }
+  .chart-container { grid-template-columns:1fr; }
+  .toolbar { flex-direction:column; }
+  td, th { padding:.4rem .5rem; }
+}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">&#9681;</button>
+<div class="wrap">
+
+<div class="hero">
+<h1>Composio App Research</h1>
+<p>Automated analysis of 100 apps across 10 categories — authentication, API surface, buildability verdicts, and integration patterns</p>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-val">100</div><div class="stat-label">Apps Analyzed</div></div>
+<div class="stat"><div class="stat-val green">75</div><div class="stat-label">Ready to Build</div></div>
+<div class="stat"><div class="stat-val">89.0%</div><div class="stat-label">Self-Serve Access</div></div>
+<div class="stat"><div class="stat-val purple">57</div><div class="stat-label">Already in Composio</div></div>
+<div class="stat"><div class="stat-val">24</div><div class="stat-label">Untapped Ready Apps</div></div>
+<div class="stat"><div class="stat-val">87</div><div class="stat-label">Have MCP Servers</div></div>
+</div>
+
+<section>
+<h2 class="section-title">Distribution & Patterns</h2>
+<div class="chart-container">
+<div class="chart-card">
+<h3>Authentication Methods</h3>
+<div class="bar-row"><span class="bar-label">OAuth2</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div><span class="bar-val">67</span></div></div>
+<div class="bar-row"><span class="bar-label">Token</span><div class="bar-track"><div class="bar-fill" style="width:98%;background:#8b5cf6"></div><span class="bar-val">66</span></div></div>
+<div class="bar-row"><span class="bar-label">API Key</span><div class="bar-track"><div class="bar-fill" style="width:74%;background:#a78bfa"></div><span class="bar-val">50</span></div></div>
+<div class="bar-row"><span class="bar-label">Basic</span><div class="bar-track"><div class="bar-fill" style="width:23%;background:#c4b5fd"></div><span class="bar-val">16</span></div></div>
+<div class="bar-row"><span class="bar-label">Other</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:#ddd6fe"></div><span class="bar-val">11</span></div></div>
+<div class="bar-row"><span class="bar-label">JWT</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:#7c3aed"></div><span class="bar-val">6</span></div></div>
+<div class="bar-row"><span class="bar-label">HMAC</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#4c1d95"></div><span class="bar-val">3</span></div></div>
+<div class="bar-row"><span class="bar-label">None</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#312e81"></div><span class="bar-val">2</span></div></div>
+</div>
+<div class="chart-card">
+<h3>Buildability Verdicts</h3>
+<div class="donut-wrap">
+<svg viewBox="0 0 120 120" width="160" height="160">
+<path d="M 60 60 L 60.0 15.0 A 45 45 0 1 1 15.0 60.0 Z" fill="#10b981"/>
+<path d="M 60 60 L 15.0 60.0 A 45 45 0 0 1 57.2 15.1 Z" fill="#f59e0b"/>
+<path d="M 60 60 L 57.2 15.1 A 45 45 0 0 1 60.0 15.0 Z" fill="#ef4444"/>
+<circle cx="60" cy="60" r="25" fill="var(--bg2)"/>
+<text x="60" y="65" text-anchor="middle" font-size="14" font-weight="700" fill="var(--fg)">100</text>
+</svg>
+<div class="donut-legend">
+<div class="legend-item"><span class="legend-dot" style="background:#10b981"></span>Ready (75)</div>
+<div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>Caveats (24)</div>
+<div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Blocked (1)</div>
+</div>
+</div>
+</div>
+<div class="chart-card">
+<h3>Self-Serve by Category</h3>
+<div class="bar-row"><span class="bar-label">AI</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#10b981"></div><span class="bar-val">9/10</span></div></div>
+<div class="bar-row"><span class="bar-label">CRM</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#10b981"></div><span class="bar-val">9/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Communications</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#10b981"></div><span class="bar-val">10/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Data</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#10b981"></div><span class="bar-val">8/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Developer</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#10b981"></div><span class="bar-val">10/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Ecommerce</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#10b981"></div><span class="bar-val">8/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Finance</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#10b981"></div><span class="bar-val">7/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Marketing</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#10b981"></div><span class="bar-val">9/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Productivity</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#10b981"></div><span class="bar-val">10/10</span></div></div>
+<div class="bar-row"><span class="bar-label">Support</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#10b981"></div><span class="bar-val">9/10</span></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Actionable Insights</h2>
+<div class="card-grid">
+<div class="card">
+<h3>&#127942; Composio Gaps — Ready but Unsupported</h3>
+<p class="note" style="margin-bottom:.75rem">24 apps are "Ready" but not yet in Composio:</p>
+<div class="gap-grid"><div class="gap-card"><strong>Twenty</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">API Key</span></div>
+<div class="gap-card"><strong>Podio</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, Token, API Key, Other</span></div>
+<div class="gap-card"><strong>LiveAgent</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">API Key</span></div>
+<div class="gap-card"><strong>Plain</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">API Key</span></div>
+<div class="gap-card"><strong>Gorgias</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">Basic, API Key, OAuth2</span></div>
+<div class="gap-card"><strong>Zoho Cliq</strong><span class="sub">Communications and Messaging</span><span class="badge badge-auth">OAuth2, API Key, Token</span></div>
+<div class="gap-card"><strong>Lark (Larksuite)</strong><span class="sub">Communications and Messaging</span><span class="badge badge-auth">OAuth2, Token</span></div>
+<div class="gap-card"><strong>Pumble</strong><span class="sub">Communications and Messaging</span><span class="badge badge-auth">Token, API Key, OAuth2</span></div>
+<div class="gap-card"><strong>Vonage</strong><span class="sub">Communications and Messaging</span><span class="badge badge-auth">Basic, JWT, OAuth2, Token</span></div>
+<div class="gap-card"><strong>GoHighLevel</strong><span class="sub">Marketing, Ads, Email and Social</span><span class="badge badge-auth">OAuth2, Token</span></div>
+<div class="gap-card"><strong>systeme.io</strong><span class="sub">Marketing, Ads, Email and Social</span><span class="badge badge-auth">API Key</span></div>
+<div class="gap-card"><strong>Threads (Meta)</strong><span class="sub">Marketing, Ads, Email and Social</span><span class="badge badge-auth">OAuth2, Token</span></div></div>
+</div>
+<div class="card">
+<h3>&#9889; Easy Wins — Top Toolkit Candidates</h3>
+<p class="note" style="margin-bottom:.75rem">Self-serve + REST + standard auth + high confidence:</p>
+<div class="gap-grid"><div class="gap-card"><strong>Salesforce</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, Token</span></div>
+<div class="gap-card"><strong>HubSpot</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, Token, API Key</span></div>
+<div class="gap-card"><strong>Pipedrive</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, API Key</span></div>
+<div class="gap-card"><strong>Twenty</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">API Key</span></div>
+<div class="gap-card"><strong>Podio</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, Token, API Key, Other</span></div>
+<div class="gap-card"><strong>Zoho CRM</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, Token</span></div>
+<div class="gap-card"><strong>Close</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, API Key, Basic, Token</span></div>
+<div class="gap-card"><strong>Copper</strong><span class="sub">CRM and Sales</span><span class="badge badge-auth">OAuth2, API Key, Token, HMAC</span></div>
+<div class="gap-card"><strong>Zendesk</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">Token, OAuth2</span></div>
+<div class="gap-card"><strong>Intercom</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">OAuth2, Token</span></div>
+<div class="gap-card"><strong>Freshdesk</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">OAuth2, API Key, Basic</span></div>
+<div class="gap-card"><strong>Front</strong><span class="sub">Support and Helpdesk</span><span class="badge badge-auth">Token, OAuth2</span></div></div>
+</div>
+</div>
+
+<div class="card-grid" style="margin-top:1.5rem">
+<div class="card">
+<h3>&#128679; Top Buildability Blockers</h3>
+<div class="blocker-row"><span class="blocker-name">API access approval ambiguity</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">API access requires existing DealCloud account permissions/admin enablement.</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">API token creation restricted to Admin users; free/self-serve developer tier unclear.</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">API access tied to existing Gladly account and sandbox/setup may require contacting support or purchasing access.</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">Advertising API access requires LinkedIn approval</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">API access approval tiers and rate limits</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">Access to Commerce Cloud environments and API credentials may require partnership or paid enterprise access.</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+<div class="blocker-row"><span class="blocker-name">API access tied to paid Squarespace commerce plans; some APIs noted as maintenance mode.</span><span class="blocker-bar" style="width:100%"></span><span class="blocker-count">1</span></div>
+</div>
+<div class="card">
+<h3>&#128231; Needs Outreach</h3>
+<table style="font-size:.8rem;width:100%">
+<tr><th style="background:transparent">App</th><th style="background:transparent">Blocker</th></tr>
+<tr><td>DealCloud</td><td>API access requires existing DealCloud account permissions/admin enablement.</td></tr>
+<tr><td>Gladly</td><td>API access tied to existing Gladly account and sandbox/setup may require contacting support or purchasing access.</td></tr>
+<tr><td>LinkedIn Ads</td><td>Advertising API access requires LinkedIn approval</td></tr>
+<tr><td>Salesforce Commerce Cloud</td><td>Access to Commerce Cloud environments and API credentials may require partnership or paid enterprise access.</td></tr>
+<tr><td>FanBasis</td><td>Developer access appears gated behind login/password-protected docs.</td></tr>
+<tr><td>MrScraper</td><td>Unclear self-serve developer onboarding/API credential access</td></tr>
+<tr><td>Waterfall.io</td><td>Likely sales-gated or non-self-serve API access</td></tr>
+<tr><td>Paygent Connect</td><td>Developer portal access requires application/request approval.</td></tr>
+<tr><td>iPayX</td><td>Insufficient public API and authentication information</td></tr>
+<tr><td>PitchBook</td><td>API access appears gated behind commercial subscription/trial approval rather than fully self-serve.</td></tr>
+<tr><td>Grain</td><td>OAuth app credentials require manual approval/request; API appears beta.</td></tr>
+</table>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Research Table</h2>
+<div class="table-section">
+<div class="toolbar">
+<select id="fCat" onchange="ft()"><option value="">All Categories</option></select>
+<select id="fVerdict" onchange="ft()"><option value="">All Verdicts</option><option value="ready">Ready</option><option value="caveat">Caveats</option><option value="blocked">Blocked</option></select>
+<select id="fSS" onchange="ft()"><option value="">Self-Serve: All</option><option value="1">Yes</option><option value="0">No</option></select>
+<select id="fComp" onchange="ft()"><option value="">Composio: All</option><option value="1">Supported</option><option value="0">Not yet</option></select>
+<input type="search" id="fSearch" placeholder="Search apps..." oninput="ft()">
+<span class="count" id="rowCount">100 apps</span>
+</div>
+<div class="table-wrap">
+<table id="t">
+<thead><tr>
+<th onclick="st(0)">App</th>
+<th onclick="st(1)">Category</th>
+<th>Auth</th>
+<th onclick="st(3)">Self-Serve</th>
+<th onclick="st(4)">API</th>
+<th onclick="st(5)">MCP</th>
+<th onclick="st(6)">Verdict</th>
+<th onclick="st(7)">Composio</th>
+<th onclick="st(8)">Conf</th>
+<th>Evidence</th>
+</tr></thead>
+<tbody>
+<tr data-cat="AI, Research and Media-native" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Consensus</strong><br><span class="sub">AI-powered academic research search and synthesis platform w</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">82%</td>
+<td class="links"><a href="https://support.goconsensus.com/consensus-api-documents" target="_blank" rel="noopener">Auth</a> <a href="https://consensus.app/home/api" target="_blank" rel="noopener">API</a> <a href="https://support.goconsensus.com/consensus-api-documents" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Devin</strong><br><span class="sub">AI software engineering agent platform for creating and mana</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">77%</td>
+<td class="links"><a href="https://docs.devin.ai/api-reference/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://mindcloud.co/docs/universal/rest/devin/latest" target="_blank" rel="noopener">API</a> <a href="https://devin.ai/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Fathom</strong><br><span class="sub">AI meeting assistant platform with recordings, transcripts, </span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://developers.fathom.ai/sdks/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.fathom.ai/api-overview" target="_blank" rel="noopener">API</a> <a href="https://help.fathom.video/en/articles/8368641" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>Grain</strong><br><span class="sub">AI meeting recorder and transcription platform with meeting </span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">86%</td>
+<td class="links"><a href="https://developers.grain.com" target="_blank" rel="noopener">Auth</a> <a href="https://developers.grain.com" target="_blank" rel="noopener">API</a> <a href="https://developers.grain.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Higgsfield</strong><br><span class="sub">AI media generation platform for creating images, videos, vo</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">73%</td>
+<td class="links"><a href="https://mindcloud.co/docs/universal/rest/higgsfield-ai/latest" target="_blank" rel="noopener">Auth</a> <a href="https://apps.make.com/higgsfield-ai-sxl99v" target="_blank" rel="noopener">API</a> <a href="https://higgsfield.ai/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Mermaid CLI</strong><br><span class="sub">Command-line tool for rendering and validating Mermaid diagr</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">None</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>CLI-only<br><span class="sub">Narrow</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">84%</td>
+<td class="links"><a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" rel="noopener">API</a> <a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>NotebookLM</strong><br><span class="sub">Google&#x27;s AI-powered research and note synthesis tool for gro</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">76%</td>
+<td class="links"><a href="https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks" target="_blank" rel="noopener">Auth</a> <a href="https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks" target="_blank" rel="noopener">API</a> <a href="https://felloai.com/notebooklm-pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Otter AI</strong><br><span class="sub">AI meeting assistant and transcription platform with APIs fo</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://developer-guides.tryotter.com/api-reference" target="_blank" rel="noopener">Auth</a> <a href="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API" target="_blank" rel="noopener">API</a> <a href="https://otter.ai/signup" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Reducto</strong><br><span class="sub">Agentic document platform for parsing, extracting, splitting</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://docs.reducto.ai/studio-account" target="_blank" rel="noopener">Auth</a> <a href="https://docs.reducto.ai/quickstart" target="_blank" rel="noopener">API</a> <a href="https://reducto.ai/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="AI, Research and Media-native" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>YouTube Transcript</strong><br><span class="sub">API service for extracting and retrieving YouTube video tran</span></td>
+<td><span class="cat-pill">AI</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">None</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Narrow</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">80%</td>
+<td class="links"><a href="https://dlthub.com/context/source/youtube-transcript-api" target="_blank" rel="noopener">Auth</a> <a href="https://dlthub.com/context/source/youtube-transcript-api" target="_blank" rel="noopener">API</a> <a href="https://supadata.ai/blog/best-youtube-transcript-api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="caveat" data-ss="1" data-comp="1">
+<td><strong>Attio</strong><br><span class="sub">AI-native CRM platform for managing customer relationships, </span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">72%</td>
+<td class="links"><a href="https://docs.attio.com/mcp/overview" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/kesslerio/attio-mcp-server" target="_blank" rel="noopener">API</a> <a href="https://attio.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Close</strong><br><span class="sub">CRM and sales engagement platform for managing leads, contac</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://developer.close.com/api/overview/oauth-authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.close.com/api/overview" target="_blank" rel="noopener">API</a> <a href="https://developer.close.com/api/overview/api-key-authentication" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Copper</strong><br><span class="sub">CRM platform with a developer API for accessing and integrat</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">HMAC</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">86%</td>
+<td class="links"><a href="https://developer.copper.com/introduction/authentication.html" target="_blank" rel="noopener">Auth</a> <a href="https://developer.copper.com" target="_blank" rel="noopener">API</a> <a href="https://developer.copper.com/introduction/oauth/index.html" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>DealCloud</strong><br><span class="sub">CRM and deal management platform with REST APIs for authenti</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">80%</td>
+<td class="links"><a href="https://api.docs.dealcloud.com/sdk/python/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://api.docs.dealcloud.com/docs" target="_blank" rel="noopener">API</a> <a href="https://api.docs.dealcloud.com/docs/apikeys" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>HubSpot</strong><br><span class="sub">CRM and sales platform offering marketing, sales, service, a</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview" target="_blank" rel="noopener">Auth</a> <a href="https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview" target="_blank" rel="noopener">API</a> <a href="https://www.hubspot.com/pricing/crm" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Pipedrive</strong><br><span class="sub">CRM and sales platform with APIs and developer tools for int</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://pipedrive.readme.io/docs/core-api-concepts-authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.pipedrive.com/docs/api/v1" target="_blank" rel="noopener">API</a> <a href="https://developers.pipedrive.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Podio</strong><br><span class="sub">Work management and CRM collaboration platform with customiz</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://developers.podio.com/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.podio.com/authentication" target="_blank" rel="noopener">API</a> <a href="https://developers.podio.com/api-key" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Salesforce</strong><br><span class="sub">Cloud CRM and enterprise platform offering sales, service, m</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm" target="_blank" rel="noopener">Auth</a> <a href="https://developer.salesforce.com" target="_blank" rel="noopener">API</a> <a href="https://developer.salesforce.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Twenty</strong><br><span class="sub">Open-source CRM platform with generated REST and GraphQL API</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://docs.twenty.com/developers/extend/api" target="_blank" rel="noopener">Auth</a> <a href="https://docs.twenty.com/developers/extend/api" target="_blank" rel="noopener">API</a> <a href="https://docs.twenty.com/developers/extend/api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="CRM and Sales" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Zoho CRM</strong><br><span class="sub">Customer relationship management platform with sales automat</span></td>
+<td><span class="cat-pill">CRM</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html" target="_blank" rel="noopener">Auth</a> <a href="https://www.zoho.com/crm/developer" target="_blank" rel="noopener">API</a> <a href="https://www.zoho.com/crm/developer/docs/dev-edition.html" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Aircall</strong><br><span class="sub">Cloud-based business phone and call center platform with API</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">84%</td>
+<td class="links"><a href="https://developer.aircall.io/tutorials/basic-authentication" target="_blank" rel="noopener">Auth</a> <a href="https://support.aircall.io/en-gb/articles/10375355327517" target="_blank" rel="noopener">API</a> <a href="https://www.quo.com/blog/aircall-pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Discord</strong><br><span class="sub">Communication platform with messaging, voice, communities, a</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">96%</td>
+<td class="links"><a href="https://docs.discord.com/developers/topics/oauth2" target="_blank" rel="noopener">Auth</a> <a href="https://docs.discord.com/developers/reference" target="_blank" rel="noopener">API</a> <a href="https://docs.discord.com/developers/topics/oauth2" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Lark (Larksuite)</strong><br><span class="sub">Enterprise collaboration platform with messaging, docs, cale</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM" target="_blank" rel="noopener">Auth</a> <a href="https://open.larksuite.com/document/server-docs/getting-started/server-api-list?from=home" target="_blank" rel="noopener">API</a> <a href="https://open.larksuite.com/app" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Pumble</strong><br><span class="sub">Team communication and messaging platform with chat, voice/v</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">77%</td>
+<td class="links"><a href="https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server" target="_blank" rel="noopener">Auth</a> <a href="https://mcpmarket.com/server/pumble" target="_blank" rel="noopener">API</a> <a href="https://pumble.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Slack</strong><br><span class="sub">Team communication and collaboration platform with messaging</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">97%</td>
+<td class="links"><a href="https://docs.slack.dev/authentication/installing-with-oauth" target="_blank" rel="noopener">Auth</a> <a href="https://docs.slack.dev" target="_blank" rel="noopener">API</a> <a href="https://api.slack.com/apps" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Telegram</strong><br><span class="sub">Cloud-based messaging platform with APIs for bots and client</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">82%</td>
+<td class="links"><a href="https://core.telegram.org/api/auth" target="_blank" rel="noopener">Auth</a> <a href="https://core.telegram.org/api/auth" target="_blank" rel="noopener">API</a> <a href="https://composio.dev/auth/telegram" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Twilio</strong><br><span class="sub">Cloud communications platform providing APIs for messaging, </span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">96%</td>
+<td class="links"><a href="https://www.twilio.com/docs/iam/credentials/api" target="_blank" rel="noopener">Auth</a> <a href="https://www.twilio.com/docs" target="_blank" rel="noopener">API</a> <a href="https://www.twilio.com/en-us/pricing/current-rates" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Vonage</strong><br><span class="sub">Communications APIs for SMS, voice, video, messaging, and ve</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">JWT</span><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developer.vonage.com/en/verify/concepts/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.vonage.com/en/application/overview" target="_blank" rel="noopener">API</a> <a href="https://www.vonage.com/developer-center" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>WhatsApp Business</strong><br><span class="sub">Business messaging platform and APIs from Meta for sending a</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started" target="_blank" rel="noopener">Auth</a> <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform" target="_blank" rel="noopener">API</a> <a href="https://whatsappbusiness.com/developers/developer-hub" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Communications and Messaging" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Zoho Cliq</strong><br><span class="sub">Team messaging and collaboration platform with bots, command</span></td>
+<td><span class="cat-pill">Communications</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">76%</td>
+<td class="links"><a href="https://www.zoho.com/cliq/help/platform/getting-started-with-cliq-platform.html" target="_blank" rel="noopener">Auth</a> <a href="https://www.zoho.com/cliq/help/platform/getting-started-with-cliq-platform.html" target="_blank" rel="noopener">API</a> <a href="https://www.zoho.com/cliq/pricing.html" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="caveat" data-ss="1" data-comp="1">
+<td><strong>Ahrefs</strong><br><span class="sub">SEO and marketing intelligence platform offering APIs for ke</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://docs.ahrefs.com/en/api/docs/introduction" target="_blank" rel="noopener">Auth</a> <a href="https://docs.ahrefs.com" target="_blank" rel="noopener">API</a> <a href="https://docs.ahrefs.com/en/api/docs/introduction" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Apify</strong><br><span class="sub">Platform for web scraping, data extraction, and automation u</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://docs.apify.com/api/v2" target="_blank" rel="noopener">Auth</a> <a href="https://docs.apify.com/api/v2" target="_blank" rel="noopener">API</a> <a href="https://use-apify.com/docs/what-is-apify/apify-free-plan" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Bright Data</strong><br><span class="sub">Web data platform for large-scale web scraping, proxy infras</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://docs.brightdata.com/api-reference/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.brightdata.com/api-reference/authentication" target="_blank" rel="noopener">API</a> <a href="https://docs.brightdata.com/general/account/billing-and-pricing/free-tier" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Clay</strong><br><span class="sub">AI-powered go-to-market data enrichment and workflow automat</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">JWT</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">76%</td>
+<td class="links"><a href="https://university.clay.com/docs/http-api-integration-overview" target="_blank" rel="noopener">Auth</a> <a href="https://university.clay.com/docs/http-api-integration-overview" target="_blank" rel="noopener">API</a> <a href="https://www.clay.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>DataForSEO</strong><br><span class="sub">SEO data platform offering APIs for SERP results, keywords, </span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">Basic</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">93%</td>
+<td class="links"><a href="https://docs.dataforseo.com/v3/auth" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/api-evangelist/dataforseo" target="_blank" rel="noopener">API</a> <a href="https://dataforseo.com/update/pricing-update-in-dataforseo-apis" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Firecrawl</strong><br><span class="sub">AI-focused web scraping, crawling, search, and extraction AP</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://docs.firecrawl.dev/api-reference/v2-introduction" target="_blank" rel="noopener">Auth</a> <a href="https://docs.firecrawl.dev/api-reference/v2-introduction" target="_blank" rel="noopener">API</a> <a href="https://www.firecrawl.dev/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>MrScraper</strong><br><span class="sub">AI-powered web scraping platform with APIs to run scrapers a</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">73%</td>
+<td class="links"><a href="https://docs.mrscraper.com/docs/api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.mrscraper.com/docs/features/activating-api" target="_blank" rel="noopener">API</a> <a href="https://docs.mrscraper.com/docs/api/authentication" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>SE Ranking</strong><br><span class="sub">SEO platform providing APIs for keyword, backlink, domain, a</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">96%</td>
+<td class="links"><a href="https://seranking.com/api/data/getting-started" target="_blank" rel="noopener">Auth</a> <a href="https://seranking.com/api/how-to-get-api" target="_blank" rel="noopener">API</a> <a href="https://seranking.com/api-pricing.html" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Sherlock</strong><br><span class="sub">Open-source OSINT tool for searching usernames across social</span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>Other<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-mid">63%</td>
+<td class="links"><a href="https://docs.sherlock.cloudferro.com/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/sherlock-project/api" target="_blank" rel="noopener">API</a> <a href="https://github.com/sherlock-project/api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Data, SEO and Scraping" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>Waterfall.io</strong><br><span class="sub">Contact and company intelligence enrichment API aggregating </span></td>
+<td><span class="cat-pill">Data</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">85%</td>
+<td class="links"><a href="https://docs.waterfall.io/v1/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.waterfall.io/v1/introduction" target="_blank" rel="noopener">API</a> <a href="https://www.waterfall.io" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Cloudflare</strong><br><span class="sub">Cloud platform providing CDN, DNS, security, serverless, sto</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developers.cloudflare.com/fundamentals/api/get-started" target="_blank" rel="noopener">Auth</a> <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener">API</a> <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Datadog</strong><br><span class="sub">Cloud observability and monitoring platform for infrastructu</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://docs.datadoghq.com/api/latest" target="_blank" rel="noopener">Auth</a> <a href="https://docs.datadoghq.com/api/latest" target="_blank" rel="noopener">API</a> <a href="https://www.datadoghq.com/pricing/list" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>GitHub</strong><br><span class="sub">Code hosting and collaboration platform with APIs for reposi</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://docs.github.com/rest/overview/authenticating-to-the-rest-api" target="_blank" rel="noopener">Auth</a> <a href="https://docs.github.com/en/rest" target="_blank" rel="noopener">API</a> <a href="https://github.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>MongoDB Atlas</strong><br><span class="sub">Managed multi-cloud MongoDB database platform with administr</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2" target="_blank" rel="noopener">Auth</a> <a href="https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2" target="_blank" rel="noopener">API</a> <a href="https://www.mongodb.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Neo4j</strong><br><span class="sub">Graph database platform and managed graph database service w</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://neo4j.com/docs/http-api/current/authentication-authorization" target="_blank" rel="noopener">Auth</a> <a href="https://neo4j.com/docs/http-api/current/authentication-authorization" target="_blank" rel="noopener">API</a> <a href="https://neo4j.com/blog/news/announcing-early-access-neo4j-aura-free-tier" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Netlify</strong><br><span class="sub">Web hosting and deployment platform for the programmable web</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">96%</td>
+<td class="links"><a href="https://open-api.netlify.com" target="_blank" rel="noopener">Auth</a> <a href="https://open-api.netlify.com" target="_blank" rel="noopener">API</a> <a href="https://www.netlify.com/blog/introducing-netlify-free-plan" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Sentry</strong><br><span class="sub">Application monitoring and error tracking platform for devel</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://docs.sentry.io/api/auth" target="_blank" rel="noopener">Auth</a> <a href="https://docs.sentry.io/api" target="_blank" rel="noopener">API</a> <a href="https://sentry.io/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Snowflake</strong><br><span class="sub">Cloud data platform for data warehousing, analytics, AI, and</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">JWT</span><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.snowflake.com/en/developer-guide/sql-api/authenticating" target="_blank" rel="noopener">API</a> <a href="https://www.reddit.com/r/snowflake/comments/ukp8nb/is_there_developer_pricing_for_snowflake" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Supabase</strong><br><span class="sub">Open-source backend platform providing Postgres database, au</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">JWT</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://supabase.com/docs/guides/auth" target="_blank" rel="noopener">Auth</a> <a href="https://supabase.com/docs/guides/auth" target="_blank" rel="noopener">API</a> <a href="https://designrevision.com/blog/supabase-pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Developer, Infra and Data platforms" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Vercel</strong><br><span class="sub">Cloud platform for deploying, scaling, and managing web appl</span></td>
+<td><span class="cat-pill">Developer</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://vercel.com/docs/rest-api" target="_blank" rel="noopener">Auth</a> <a href="https://vercel.com/docs/rest-api" target="_blank" rel="noopener">API</a> <a href="https://vercel.com/docs/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Amazon Selling Partner</strong><br><span class="sub">REST-based API for Amazon sellers and vendors to access orde</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">HMAC</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://developer-docs-amazon-shipping.readme.io/apis/docs/connecting-to-the-selling-partner-api" target="_blank" rel="noopener">Auth</a> <a href="https://sell.amazon.com/developers" target="_blank" rel="noopener">API</a> <a href="https://sell.amazon.com/developers" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>BigCommerce</strong><br><span class="sub">Ecommerce platform with APIs for store management, storefron</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts" target="_blank" rel="noopener">Auth</a> <a href="https://docs.bigcommerce.com/developer/api-reference/about-our-apis" target="_blank" rel="noopener">API</a> <a href="https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Ecwid</strong><br><span class="sub">E-commerce platform with APIs for managing stores, products,</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://docs.ecwid.com/get-started/make-your-first-api-request" target="_blank" rel="noopener">Auth</a> <a href="https://docs.ecwid.com/api-reference" target="_blank" rel="noopener">API</a> <a href="https://developers.ecwid.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>FanBasis</strong><br><span class="sub">Payments and subscription platform for creators and business</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-mid">50%</td>
+<td class="links"><a href="https://developers.basistheory.com/docs/api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://apidocs.fan" target="_blank" rel="noopener">API</a> <a href="https://dev-docs.fanbasis.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Gumroad</strong><br><span class="sub">Ecommerce platform for creators to sell digital products and</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">86%</td>
+<td class="links"><a href="https://docs.n8n.io/integrations/builtin/credentials/gumroad" target="_blank" rel="noopener">Auth</a> <a href="https://rollout.com/integration-guides/gumroad/api-essentials" target="_blank" rel="noopener">API</a> <a href="https://www.postman.com/api-reference-library/gumroad/overview" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Magento (Adobe Commerce)</strong><br><span class="sub">Ecommerce platform providing REST and GraphQL APIs for produ</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://providers.apis.io/providers/adobe-commerce" target="_blank" rel="noopener">Auth</a> <a href="https://developer.adobe.com/commerce/webapi/rest/reference" target="_blank" rel="noopener">API</a> <a href="https://developer.adobe.com/commerce/marketplace" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>Salesforce Commerce Cloud</strong><br><span class="sub">Enterprise ecommerce platform with APIs for B2C/B2B commerce</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">JWT</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">85%</td>
+<td class="links"><a href="https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html" target="_blank" rel="noopener">Auth</a> <a href="https://developer.salesforce.com/docs/commerce/commerce-api/references/products" target="_blank" rel="noopener">API</a> <a href="https://trailhead.salesforce.com/trailblazer-community/feed/0D5KX00000anKD90AM" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Shopify</strong><br><span class="sub">Ecommerce platform with APIs for storefronts, admin operatio</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://shopify.dev/docs/api/usage/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://shopify.dev/docs/api/usage" target="_blank" rel="noopener">API</a> <a href="https://requestly.com/api-explorer/shopify" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="caveat" data-ss="1" data-comp="1">
+<td><strong>Squarespace</strong><br><span class="sub">Website builder and ecommerce platform with commerce APIs fo</span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">83%</td>
+<td class="links"><a href="https://developers.squarespace.com/commerce-apis/authentication-and-permissions" target="_blank" rel="noopener">Auth</a> <a href="https://developers.squarespace.com/commerce-apis/overview" target="_blank" rel="noopener">API</a> <a href="https://www.squarespace.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Ecommerce" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>WooCommerce</strong><br><span class="sub">Open-source ecommerce platform for WordPress with REST APIs </span></td>
+<td><span class="cat-pill">Ecommerce</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">93%</td>
+<td class="links"><a href="https://developer.woocommerce.com/docs/apis/rest-api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.woocommerce.com/docs/apis/rest-api" target="_blank" rel="noopener">API</a> <a href="https://developer.woocommerce.com/docs/apis/rest-api/authentication" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Binance</strong><br><span class="sub">Cryptocurrency exchange platform offering trading, market da</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">HMAC</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://developers.binance.com/en/docs/products/binance-pay-merchant/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.binance.com/en/docs" target="_blank" rel="noopener">API</a> <a href="https://www.binance.com/en/binance-api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Brex</strong><br><span class="sub">Financial platform API for managing expenses, spend limits, </span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">88%</td>
+<td class="links"><a href="https://developer.brex.com/guides/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://www.brex.com/support/brex-api" target="_blank" rel="noopener">API</a> <a href="https://www.openbankingtracker.com/provider/brex/apis" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>Paygent Connect</strong><br><span class="sub">Payment processing and fintech API platform powered by NMI/P</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">80%</td>
+<td class="links"><a href="https://docs.payaconnect.com/developers/api/endpoints/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.payaconnect.com/developers" target="_blank" rel="noopener">API</a> <a href="https://docs.payaconnect.com/developers" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>PitchBook</strong><br><span class="sub">Private market data and investment analytics platform with A</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">86%</td>
+<td class="links"><a href="https://documenter.getpostman.com/view/5190535/TzCV1iRc" target="_blank" rel="noopener">Auth</a> <a href="https://documenter.getpostman.com/view/5190535/TzCV1iRc" target="_blank" rel="noopener">API</a> <a href="https://pitchbook.com/products/direct-access-data/api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="caveat" data-ss="1" data-comp="1">
+<td><strong>Plaid</strong><br><span class="sub">Financial data network and API platform for connecting bank </span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://plaid.com/docs/api/oauth" target="_blank" rel="noopener">Auth</a> <a href="https://plaid.com/docs" target="_blank" rel="noopener">API</a> <a href="https://support.plaid.com/hc/en-us/articles/16194695660311-Can-I-use-Plaid-for-free" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>QuickBooks</strong><br><span class="sub">Cloud accounting and financial management platform with APIs</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST+GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization" target="_blank" rel="noopener">Auth</a> <a href="https://developer.intuit.com/app/developer/qbo/docs/get-started" target="_blank" rel="noopener">API</a> <a href="https://developer.intuit.com/app/developer/qbo/docs/get-started" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Ramp</strong><br><span class="sub">Corporate finance platform offering spend management, cards,</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">88%</td>
+<td class="links"><a href="https://docs.ramp.com/developer-api/v1/getting-started" target="_blank" rel="noopener">Auth</a> <a href="https://docs.ramp.com/developer-api/v1/getting-started" target="_blank" rel="noopener">API</a> <a href="https://docs.ramp.com/developer-api/v1/getting-started" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Stripe</strong><br><span class="sub">Online payments and financial infrastructure platform with A</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">99%</td>
+<td class="links"><a href="https://docs.stripe.com/api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.stripe.com/api" target="_blank" rel="noopener">API</a> <a href="https://docs.stripe.com/development" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Xero</strong><br><span class="sub">Cloud accounting and business finance platform with APIs for</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://developer.xero.com/documentation/guides/oauth2/overview" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/xeroapi" target="_blank" rel="noopener">API</a> <a href="https://developer.xero.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Finance and Fintech" data-v="blocked" data-ss="0" data-comp="0">
+<td><strong>iPayX</strong><br><span class="sub">Unknown fintech/payment-related platform with limited public</span></td>
+<td><span class="cat-pill">Finance</span></td>
+<td><span class="badge badge-auth">Other</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>Other<br><span class="sub">Unknown</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill blocked">Blocked</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-low">22%</td>
+<td class="links"><a href="https://ipayx.ai/docs" target="_blank" rel="noopener">Auth</a> <a href="https://ipayx.ai/docs" target="_blank" rel="noopener">API</a> <a href="https://ipayx.ai/docs" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>GoHighLevel</strong><br><span class="sub">CRM and marketing automation platform with APIs for contacts</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc" target="_blank" rel="noopener">Auth</a> <a href="https://marketplace.gohighlevel.com/docs" target="_blank" rel="noopener">API</a> <a href="https://marketplace.gohighlevel.com/docs" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Google Ads</strong><br><span class="sub">Programmatic API for managing Google Ads accounts, campaigns</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://developers.google.com/google-ads/api/docs/oauth/overview" target="_blank" rel="noopener">Auth</a> <a href="https://developers.google.com/google-ads/api/docs/get-started/introduction" target="_blank" rel="noopener">API</a> <a href="https://developers.google.com/google-ads/api/docs/api-policy/developer-token" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Klaviyo</strong><br><span class="sub">Marketing automation and customer engagement platform for em</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developers.klaviyo.com/en/docs/authenticate_" target="_blank" rel="noopener">Auth</a> <a href="https://developers.klaviyo.com/en/reference/api_overview" target="_blank" rel="noopener">API</a> <a href="https://www.klaviyo.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="caveat" data-ss="0" data-comp="1">
+<td><strong>LinkedIn Ads</strong><br><span class="sub">LinkedIn&#x27;s advertising and marketing platform API for managi</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access" target="_blank" rel="noopener">Auth</a> <a href="https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers?view=li-lms-2026-06" target="_blank" rel="noopener">API</a> <a href="https://developer.linkedin.com/product-catalog/marketing/advertising-api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Mailchimp</strong><br><span class="sub">Email marketing and marketing automation platform with APIs </span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2" target="_blank" rel="noopener">Auth</a> <a href="https://mailchimp.com/developer/marketing/docs/fundamentals" target="_blank" rel="noopener">API</a> <a href="https://mailchimp.com/developer/marketing/docs/fundamentals" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Meta Ads</strong><br><span class="sub">Advertising and marketing API platform for managing Meta/Fac</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/emeraldtarek/meta-ads-api-docs-md" target="_blank" rel="noopener">API</a> <a href="https://www.get-ryze.ai/blog/meta-marketing-api-free-tier-limitations-and-quotas" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="caveat" data-ss="1" data-comp="1">
+<td><strong>Pinterest</strong><br><span class="sub">Social media and visual discovery platform with APIs for con</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization" target="_blank" rel="noopener">Auth</a> <a href="https://developers.pinterest.com/docs/api/v5" target="_blank" rel="noopener">API</a> <a href="https://developers.pinterest.com/docs/key-concepts/access-tiers" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>SendGrid</strong><br><span class="sub">Cloud email delivery and marketing email platform for transa</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://apis.io/apis/sendgrid/twilio-sendgrid-domain-authentication-api" target="_blank" rel="noopener">API</a> <a href="https://sfailabs.com/guides/how-to-get-sendgrid-api-key" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Threads (Meta)</strong><br><span class="sub">Meta’s Threads API enables developers to publish posts, mana</span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://developers.facebook.com/documentation/threads/get-started" target="_blank" rel="noopener">Auth</a> <a href="https://developers.facebook.com/documentation/threads" target="_blank" rel="noopener">API</a> <a href="https://developers.facebook.com/documentation/threads/get-started" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Marketing, Ads, Email and Social" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>systeme.io</strong><br><span class="sub">All-in-one marketing platform for funnels, email marketing, </span></td>
+<td><span class="cat-pill">Marketing</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">90%</td>
+<td class="links"><a href="https://grokipedia.com/page/Systemeio_API" target="_blank" rel="noopener">Auth</a> <a href="https://help.systeme.io/article/2329-how-to-use-systeme-io-public-api" target="_blank" rel="noopener">API</a> <a href="https://systeme.io/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Airtable</strong><br><span class="sub">Low-code collaborative database and app platform with a publ</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">93%</td>
+<td class="links"><a href="https://www.airtable.com/developers/web/api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://www.airtable.com/developers/web/api" target="_blank" rel="noopener">API</a> <a href="https://www.airtable.com/developers/web/api/billing-plans" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Asana</strong><br><span class="sub">Project management and work tracking platform with tasks, pr</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">94%</td>
+<td class="links"><a href="https://developers.asana.com/docs/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.asana.com/docs/authentication" target="_blank" rel="noopener">API</a> <a href="https://developers.asana.com/docs/personal-access-token" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>ClickUp</strong><br><span class="sub">Project management and productivity platform with tasks, doc</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developer.clickup.com/docs/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.clickup.com/docs/Getting%20Started" target="_blank" rel="noopener">API</a> <a href="https://developer.clickup.com/docs/authentication" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Coda</strong><br><span class="sub">Collaborative docs and project management platform with prog</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://coda.io/developers" target="_blank" rel="noopener">Auth</a> <a href="https://coda.io/developers" target="_blank" rel="noopener">API</a> <a href="https://www.postman.com/codaio/coda-workspace/collection/0vy7uxn/coda-api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Harvest</strong><br><span class="sub">Time tracking and project management platform with a public </span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://help.getharvest.com/api-v2/authentication-api/authentication/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://help.getharvest.com/api-v2/authentication-api/authentication/authentication" target="_blank" rel="noopener">API</a> <a href="https://support.getharvest.com/hc/en-us/articles/360048180732-The-Harvest-API" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Jira</strong><br><span class="sub">Project management and issue tracking platform by Atlassian.</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">JWT</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">93%</td>
+<td class="links"><a href="https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis" target="_blank" rel="noopener">Auth</a> <a href="https://developer.atlassian.com/server/jira/platform/rest/v11002" target="_blank" rel="noopener">API</a> <a href="https://www.atlassian.com/software/jira/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Linear</strong><br><span class="sub">Developer-focused issue tracking and project management plat</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://linear.app/developers/oauth-2-0-authentication" target="_blank" rel="noopener">Auth</a> <a href="https://linear.app/developers" target="_blank" rel="noopener">API</a> <a href="https://linear.app/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Monday.com</strong><br><span class="sub">Work operating system for project management, workflows, aut</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>GraphQL<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">96%</td>
+<td class="links"><a href="https://developer.monday.com/api-reference/docs/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.monday.com/api-reference" target="_blank" rel="noopener">API</a> <a href="https://developer.monday.com/api-reference" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Notion</strong><br><span class="sub">Workspace and productivity platform for docs, databases, pro</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developers.notion.com/guides/get-started/authorization" target="_blank" rel="noopener">Auth</a> <a href="https://developers.notion.com/reference/intro" target="_blank" rel="noopener">API</a> <a href="https://developers.notion.com/guides/get-started/authorization" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Productivity and Project Management" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Smartsheet</strong><br><span class="sub">Work management and collaboration platform with sheets, proj</span></td>
+<td><span class="cat-pill">Productivity</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.smartsheet.com/api/smartsheet/openapi/users" target="_blank" rel="noopener">API</a> <a href="https://developers.smartsheet.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Freshdesk</strong><br><span class="sub">Customer support and helpdesk platform for managing tickets,</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">88%</td>
+<td class="links"><a href="https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691" target="_blank" rel="noopener">Auth</a> <a href="https://developers.freshworks.com/docs/app-sdk/v3.0/support_ticket/rest-apis" target="_blank" rel="noopener">API</a> <a href="https://www.freshworks.com/freshdesk/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Front</strong><br><span class="sub">Customer communication and helpdesk platform for managing sh</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">91%</td>
+<td class="links"><a href="https://dev.frontapp.com/docs/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://dev.frontapp.com/reference/introduction" target="_blank" rel="noopener">API</a> <a href="https://dev.frontapp.com/docs/welcome" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="caveat" data-ss="0" data-comp="0">
+<td><strong>Gladly</strong><br><span class="sub">Customer service and helpdesk platform with APIs, SDKs, webh</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon red">&#10007;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">86%</td>
+<td class="links"><a href="https://help.gladly.com/implementation/docs/get-your-api-tokens" target="_blank" rel="noopener">Auth</a> <a href="https://developer.gladly.com/rest" target="_blank" rel="noopener">API</a> <a href="https://help.gladly.com/developer-tutorials/docs/setup-and-testing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Gorgias</strong><br><span class="sub">Customer support and helpdesk platform with APIs for tickets</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">Basic</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://docs.gorgias.com/en-US/rest-api-208286" target="_blank" rel="noopener">Auth</a> <a href="https://docs.gorgias.com/en-US/articles/developer-resources-18370" target="_blank" rel="noopener">API</a> <a href="https://docs.gorgias.com/en-US/articles/developer-resources-18370" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Help Scout</strong><br><span class="sub">Customer support and helpdesk platform with shared inboxes, </span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">API Key</span><span class="badge badge-auth">Basic</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">92%</td>
+<td class="links"><a href="https://developer.helpscout.com/mailbox-api/overview/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developer.helpscout.com/mailbox-api/overview/authentication" target="_blank" rel="noopener">API</a> <a href="https://www.helpscout.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Intercom</strong><br><span class="sub">Customer support and helpdesk platform with messaging, ticke</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">OAuth2</span><span class="badge badge-auth">Token</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">95%</td>
+<td class="links"><a href="https://developers.intercom.com/docs/build-an-integration/learn-more/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://developers.intercom.com/docs/references/introduction" target="_blank" rel="noopener">API</a> <a href="https://developers.intercom.com" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>LiveAgent</strong><br><span class="sub">Customer support and helpdesk platform with live chat, ticke</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">85%</td>
+<td class="links"><a href="https://support.liveagent.com/840770-Complete-API-reference" target="_blank" rel="noopener">Auth</a> <a href="https://support.liveagent.com/840770-Complete-API-reference" target="_blank" rel="noopener">API</a> <a href="https://www.liveagent.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="0">
+<td><strong>Plain</strong><br><span class="sub">Customer support and helpdesk platform with a GraphQL API fo</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">API Key</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>GraphQL<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">71%</td>
+<td class="links"><a href="https://www.plain.com/docs/graphql/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://www.plain.com/docs/graphql/authentication" target="_blank" rel="noopener">API</a> <a href="https://www.plain.com/docs/graphql/authentication" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="caveat" data-ss="1" data-comp="0">
+<td><strong>Pylon</strong><br><span class="sub">Customer support and helpdesk platform with API and MCP inte</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Moderate</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill caveat">Ready with caveats</span></td>
+<td class="center"><span class="icon dim">—</span></td>
+<td class="center conf-high">89%</td>
+<td class="links"><a href="https://docs.usepylon.com/pylon-docs/developer/api/authentication" target="_blank" rel="noopener">Auth</a> <a href="https://docs.usepylon.com/pylon-docs/developer/api" target="_blank" rel="noopener">API</a> <a href="https://docs.usepylon.com/pylon-docs/developer/api" target="_blank" rel="noopener">Pricing</a></td>
+</tr><tr data-cat="Support and Helpdesk" data-v="ready" data-ss="1" data-comp="1">
+<td><strong>Zendesk</strong><br><span class="sub">Customer service and helpdesk SaaS platform with support, ch</span></td>
+<td><span class="cat-pill">Support</span></td>
+<td><span class="badge badge-auth">Token</span><span class="badge badge-auth">OAuth2</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td>REST<br><span class="sub">Broad</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td><span class="verdict-pill ready">Ready</span></td>
+<td class="center"><span class="icon green">&#10003;</span></td>
+<td class="center conf-high">78%</td>
+<td class="links"><a href="https://github.com/mattcoatsworth/zendesk-mcp-server" target="_blank" rel="noopener">Auth</a> <a href="https://github.com/mattcoatsworth/zendesk-mcp-server" target="_blank" rel="noopener">API</a> <a href="https://www.zendesk.com/pricing" target="_blank" rel="noopener">Pricing</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">The Agent</h2>
+<div class="agent-card">
+<h3>Architecture</h3>
+<ul>
+<li><strong>LLM:</strong> Azure GPT-4o-mini via <code>openai.AzureOpenAI</code></li>
+<li><strong>Search:</strong> <code>Tavily</code> — 3 targeted queries per app (auth docs, pricing, MCP)</li>
+<li><strong>Structured output:</strong> OpenAI function calling with <code>record_app_research</code> tool schema</li>
+<li><strong>Composio SDK:</strong> Cross-references which apps already have Composio toolkits via <code>composio.App</code> enum</li>
+<li><strong>Resume support:</strong> Incremental JSON saves; skips completed apps on restart</li>
+<li><strong>Pipeline:</strong> Research → URL Verification → Pattern Extraction → HTML Export</li>
+</ul>
+<h3>Verification</h3>
+
+<div class="metric-grid">
+<div class="metric"><span class="metric-num green">93.0%</span><span class="metric-label">URLs Reachable</span></div>
+<div class="metric"><span class="metric-num">279</span><span class="metric-label">Valid Evidence URLs</span></div>
+<div class="metric"><span class="metric-num red">21</span><span class="metric-label">Broken URLs</span></div>
+</div>
+<p class="note">Evidence URLs were validated via HTTP HEAD requests. 93.0% of cited documentation links are live and accessible.</p>
+<h3>Limitations & Honest Assessment</h3>
+<ul>
+<li>MCP server detection has high false-positive rate — web search often conflates "MCP" mentions with actual server availability</li>
+<li>Self-serve assessment can be ambiguous for apps with "contact sales for API access" but free product tiers</li>
+<li>Confidence is self-assessed by the model; low-confidence results (fanbasis, iPayX, Sherlock) should be manually verified</li>
+<li>Mean confidence: <strong>0.88</strong> across all apps</li>
+</ul>
+</div>
+</section>
+
+<footer>
+Built with Azure GPT-4o-mini + Tavily Search + Composio SDK | Research Agent by Kumar Vatsal | July 2026
+</footer>
+</div>
+
+<script>
+function toggleTheme(){const r=document.documentElement,c=r.getAttribute('data-theme');r.setAttribute('data-theme',c==='dark'?'light':'dark')}
+
+const cats=[...new Set([...document.querySelectorAll('#t tbody tr')].map(r=>r.dataset.cat))].sort();
+const sel=document.getElementById('fCat');
+cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o)});
+
+function ft(){
+  const cat=document.getElementById('fCat').value;
+  const v=document.getElementById('fVerdict').value;
+  const ss=document.getElementById('fSS').value;
+  const comp=document.getElementById('fComp').value;
+  const q=document.getElementById('fSearch').value.toLowerCase();
+  let n=0;
+  document.querySelectorAll('#t tbody tr').forEach(r=>{
+    const show=(!cat||r.dataset.cat===cat)&&(!v||r.dataset.v===v)&&(!ss||r.dataset.ss===ss)&&(!comp||r.dataset.comp===comp)&&(!q||r.children[0].textContent.toLowerCase().includes(q));
+    r.style.display=show?'':'none';
+    if(show)n++;
+  });
+  document.getElementById('rowCount').textContent=n+' apps';
+}
+
+let sd={};
+function st(c){
+  const tb=document.querySelector('#t tbody');
+  const rows=[...tb.querySelectorAll('tr')];
+  sd[c]=!sd[c];
+  rows.sort((a,b)=>{
+    const at=a.children[c].textContent.trim(),bt=b.children[c].textContent.trim();
+    const an=parseFloat(at),bn=parseFloat(bt);
+    let cmp=(!isNaN(an)&&!isNaN(bn))?an-bn:at.localeCompare(bt);
+    return sd[c]?cmp:-cmp;
+  });
+  rows.forEach(r=>tb.appendChild(r));
+}
+</script>
+</body>
+</html>

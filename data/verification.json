@@ -1,0 +1,1938 @@
+{
+  "url_validation": {
+    "results": {
+      "Salesforce": {
+        "auth_evidence_url": {
+          "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm",
+          "status": 403,
+          "reachable": false
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.salesforce.com",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://developer.salesforce.com",
+          "status": 403,
+          "reachable": false
+        }
+      },
+      "HubSpot": {
+        "auth_evidence_url": {
+          "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.hubspot.com/pricing/crm",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Pipedrive": {
+        "auth_evidence_url": {
+          "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.pipedrive.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.pipedrive.com/docs/api/v1",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Attio": {
+        "auth_evidence_url": {
+          "url": "https://docs.attio.com/mcp/overview",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://attio.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/kesslerio/attio-mcp-server",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Twenty": {
+        "auth_evidence_url": {
+          "url": "https://docs.twenty.com/developers/extend/api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.twenty.com/developers/extend/api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.twenty.com/developers/extend/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Podio": {
+        "auth_evidence_url": {
+          "url": "https://developers.podio.com/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.podio.com/api-key",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.podio.com/authentication",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Zoho CRM": {
+        "auth_evidence_url": {
+          "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.zoho.com/crm/developer/docs/dev-edition.html",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.zoho.com/crm/developer",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Close": {
+        "auth_evidence_url": {
+          "url": "https://developer.close.com/api/overview/oauth-authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.close.com/api/overview/api-key-authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.close.com/api/overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Copper": {
+        "auth_evidence_url": {
+          "url": "https://developer.copper.com/introduction/authentication.html",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.copper.com/introduction/oauth/index.html",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.copper.com",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "DealCloud": {
+        "auth_evidence_url": {
+          "url": "https://api.docs.dealcloud.com/sdk/python/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://api.docs.dealcloud.com/docs/apikeys",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://api.docs.dealcloud.com/docs",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Zendesk": {
+        "auth_evidence_url": {
+          "url": "https://github.com/mattcoatsworth/zendesk-mcp-server",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.zendesk.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/mattcoatsworth/zendesk-mcp-server",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Intercom": {
+        "auth_evidence_url": {
+          "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.intercom.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.intercom.com/docs/references/introduction",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Freshdesk": {
+        "auth_evidence_url": {
+          "url": "https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.freshworks.com/freshdesk/pricing",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://developers.freshworks.com/docs/app-sdk/v3.0/support_ticket/rest-apis",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Front": {
+        "auth_evidence_url": {
+          "url": "https://dev.frontapp.com/docs/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://dev.frontapp.com/docs/welcome",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://dev.frontapp.com/reference/introduction",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Pylon": {
+        "auth_evidence_url": {
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "LiveAgent": {
+        "auth_evidence_url": {
+          "url": "https://support.liveagent.com/840770-Complete-API-reference",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.liveagent.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://support.liveagent.com/840770-Complete-API-reference",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Plain": {
+        "auth_evidence_url": {
+          "url": "https://www.plain.com/docs/graphql/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.plain.com/docs/graphql/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.plain.com/docs/graphql/authentication",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Help Scout": {
+        "auth_evidence_url": {
+          "url": "https://developer.helpscout.com/mailbox-api/overview/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.helpscout.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.helpscout.com/mailbox-api/overview/authentication",
+          "status": "HTTPSConnectionPool(host='developer.helpscout.com', port=443): Read timed out. (read timeout=10)",
+          "reachable": false
+        }
+      },
+      "Gorgias": {
+        "auth_evidence_url": {
+          "url": "https://docs.gorgias.com/en-US/rest-api-208286",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.gorgias.com/en-US/articles/developer-resources-18370",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.gorgias.com/en-US/articles/developer-resources-18370",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Gladly": {
+        "auth_evidence_url": {
+          "url": "https://help.gladly.com/implementation/docs/get-your-api-tokens",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://help.gladly.com/developer-tutorials/docs/setup-and-testing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.gladly.com/rest",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Slack": {
+        "auth_evidence_url": {
+          "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://api.slack.com/apps",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.slack.dev",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Twilio": {
+        "auth_evidence_url": {
+          "url": "https://www.twilio.com/docs/iam/credentials/api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.twilio.com/en-us/pricing/current-rates",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.twilio.com/docs",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Zoho Cliq": {
+        "auth_evidence_url": {
+          "url": "https://www.zoho.com/cliq/help/platform/getting-started-with-cliq-platform.html",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.zoho.com/cliq/pricing.html",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.zoho.com/cliq/help/platform/getting-started-with-cliq-platform.html",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Lark (Larksuite)": {
+        "auth_evidence_url": {
+          "url": "https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://open.larksuite.com/app",
+          "status": 404,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://open.larksuite.com/document/server-docs/getting-started/server-api-list?from=home",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Pumble": {
+        "auth_evidence_url": {
+          "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://pumble.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://mcpmarket.com/server/pumble",
+          "status": 429,
+          "reachable": false
+        }
+      },
+      "Discord": {
+        "auth_evidence_url": {
+          "url": "https://docs.discord.com/developers/topics/oauth2",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.discord.com/developers/topics/oauth2",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.discord.com/developers/reference",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Telegram": {
+        "auth_evidence_url": {
+          "url": "https://core.telegram.org/api/auth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://composio.dev/auth/telegram",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://core.telegram.org/api/auth",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "WhatsApp Business": {
+        "auth_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://whatsappbusiness.com/developers/developer-hub",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Aircall": {
+        "auth_evidence_url": {
+          "url": "https://developer.aircall.io/tutorials/basic-authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.quo.com/blog/aircall-pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://support.aircall.io/en-gb/articles/10375355327517",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Vonage": {
+        "auth_evidence_url": {
+          "url": "https://developer.vonage.com/en/verify/concepts/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.vonage.com/developer-center",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://developer.vonage.com/en/application/overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Google Ads": {
+        "auth_evidence_url": {
+          "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.google.com/google-ads/api/docs/api-policy/developer-token",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.google.com/google-ads/api/docs/get-started/introduction",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Meta Ads": {
+        "auth_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.get-ryze.ai/blog/meta-marketing-api-free-tier-limitations-and-quotas",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/emeraldtarek/meta-ads-api-docs-md",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "LinkedIn Ads": {
+        "auth_evidence_url": {
+          "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.linkedin.com/product-catalog/marketing/advertising-api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers?view=li-lms-2026-06",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "GoHighLevel": {
+        "auth_evidence_url": {
+          "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://marketplace.gohighlevel.com/docs",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://marketplace.gohighlevel.com/docs",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Mailchimp": {
+        "auth_evidence_url": {
+          "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://mailchimp.com/developer/marketing/docs/fundamentals",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://mailchimp.com/developer/marketing/docs/fundamentals",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Klaviyo": {
+        "auth_evidence_url": {
+          "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.klaviyo.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.klaviyo.com/en/reference/api_overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "systeme.io": {
+        "auth_evidence_url": {
+          "url": "https://grokipedia.com/page/Systemeio_API",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://systeme.io/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://help.systeme.io/article/2329-how-to-use-systeme-io-public-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Pinterest": {
+        "auth_evidence_url": {
+          "url": "https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.pinterest.com/docs/api/v5",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Threads (Meta)": {
+        "auth_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/threads/get-started",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/threads/get-started",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.facebook.com/documentation/threads",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "SendGrid": {
+        "auth_evidence_url": {
+          "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://sfailabs.com/guides/how-to-get-sendgrid-api-key",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://apis.io/apis/sendgrid/twilio-sendgrid-domain-authentication-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Shopify": {
+        "auth_evidence_url": {
+          "url": "https://shopify.dev/docs/api/usage/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://requestly.com/api-explorer/shopify",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://shopify.dev/docs/api/usage",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "WooCommerce": {
+        "auth_evidence_url": {
+          "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.woocommerce.com/docs/apis/rest-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "BigCommerce": {
+        "auth_evidence_url": {
+          "url": "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.bigcommerce.com/developer/api-reference/about-our-apis",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Salesforce Commerce Cloud": {
+        "auth_evidence_url": {
+          "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html",
+          "status": 403,
+          "reachable": false
+        },
+        "self_serve_evidence_url": {
+          "url": "https://trailhead.salesforce.com/trailblazer-community/feed/0D5KX00000anKD90AM",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.salesforce.com/docs/commerce/commerce-api/references/products",
+          "status": 403,
+          "reachable": false
+        }
+      },
+      "Magento (Adobe Commerce)": {
+        "auth_evidence_url": {
+          "url": "https://providers.apis.io/providers/adobe-commerce",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.adobe.com/commerce/marketplace",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.adobe.com/commerce/webapi/rest/reference",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Squarespace": {
+        "auth_evidence_url": {
+          "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.squarespace.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.squarespace.com/commerce-apis/overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Ecwid": {
+        "auth_evidence_url": {
+          "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.ecwid.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.ecwid.com/api-reference",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Gumroad": {
+        "auth_evidence_url": {
+          "url": "https://docs.n8n.io/integrations/builtin/credentials/gumroad",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.postman.com/api-reference-library/gumroad/overview",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://rollout.com/integration-guides/gumroad/api-essentials",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Amazon Selling Partner": {
+        "auth_evidence_url": {
+          "url": "https://developer-docs-amazon-shipping.readme.io/apis/docs/connecting-to-the-selling-partner-api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://sell.amazon.com/developers",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://sell.amazon.com/developers",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "FanBasis": {
+        "auth_evidence_url": {
+          "url": "https://developers.basistheory.com/docs/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://dev-docs.fanbasis.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://apidocs.fan",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "DataForSEO": {
+        "auth_evidence_url": {
+          "url": "https://docs.dataforseo.com/v3/auth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://dataforseo.com/update/pricing-update-in-dataforseo-apis",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/api-evangelist/dataforseo",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "SE Ranking": {
+        "auth_evidence_url": {
+          "url": "https://seranking.com/api/data/getting-started",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://seranking.com/api-pricing.html",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://seranking.com/api/how-to-get-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Ahrefs": {
+        "auth_evidence_url": {
+          "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.ahrefs.com",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "MrScraper": {
+        "auth_evidence_url": {
+          "url": "https://docs.mrscraper.com/docs/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.mrscraper.com/docs/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.mrscraper.com/docs/features/activating-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Apify": {
+        "auth_evidence_url": {
+          "url": "https://docs.apify.com/api/v2",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://use-apify.com/docs/what-is-apify/apify-free-plan",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.apify.com/api/v2",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Firecrawl": {
+        "auth_evidence_url": {
+          "url": "https://docs.firecrawl.dev/api-reference/v2-introduction",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.firecrawl.dev/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.firecrawl.dev/api-reference/v2-introduction",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Bright Data": {
+        "auth_evidence_url": {
+          "url": "https://docs.brightdata.com/api-reference/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.brightdata.com/api-reference/authentication",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Sherlock": {
+        "auth_evidence_url": {
+          "url": "https://docs.sherlock.cloudferro.com/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://github.com/sherlock-project/api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/sherlock-project/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Waterfall.io": {
+        "auth_evidence_url": {
+          "url": "https://docs.waterfall.io/v1/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.waterfall.io",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.waterfall.io/v1/introduction",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Clay": {
+        "auth_evidence_url": {
+          "url": "https://university.clay.com/docs/http-api-integration-overview",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.clay.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://university.clay.com/docs/http-api-integration-overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "GitHub": {
+        "auth_evidence_url": {
+          "url": "https://docs.github.com/rest/overview/authenticating-to-the-rest-api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://github.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.github.com/en/rest",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Vercel": {
+        "auth_evidence_url": {
+          "url": "https://vercel.com/docs/rest-api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://vercel.com/docs/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://vercel.com/docs/rest-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Netlify": {
+        "auth_evidence_url": {
+          "url": "https://open-api.netlify.com",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.netlify.com/blog/introducing-netlify-free-plan",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://open-api.netlify.com",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Cloudflare": {
+        "auth_evidence_url": {
+          "url": "https://developers.cloudflare.com/fundamentals/api/get-started",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.cloudflare.com/workers/platform/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.cloudflare.com/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Supabase": {
+        "auth_evidence_url": {
+          "url": "https://supabase.com/docs/guides/auth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://designrevision.com/blog/supabase-pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://supabase.com/docs/guides/auth",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Neo4j": {
+        "auth_evidence_url": {
+          "url": "https://neo4j.com/docs/http-api/current/authentication-authorization",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://neo4j.com/blog/news/announcing-early-access-neo4j-aura-free-tier",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://neo4j.com/docs/http-api/current/authentication-authorization",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Snowflake": {
+        "auth_evidence_url": {
+          "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.reddit.com/r/snowflake/comments/ukp8nb/is_there_developer_pricing_for_snowflake",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "MongoDB Atlas": {
+        "auth_evidence_url": {
+          "url": "https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2",
+          "status": 502,
+          "reachable": false
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.mongodb.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2",
+          "status": 502,
+          "reachable": false
+        }
+      },
+      "Datadog": {
+        "auth_evidence_url": {
+          "url": "https://docs.datadoghq.com/api/latest",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.datadoghq.com/pricing/list",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.datadoghq.com/api/latest",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Sentry": {
+        "auth_evidence_url": {
+          "url": "https://docs.sentry.io/api/auth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://sentry.io/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.sentry.io/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Notion": {
+        "auth_evidence_url": {
+          "url": "https://developers.notion.com/guides/get-started/authorization",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.notion.com/guides/get-started/authorization",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.notion.com/reference/intro",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Airtable": {
+        "auth_evidence_url": {
+          "url": "https://www.airtable.com/developers/web/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.airtable.com/developers/web/api/billing-plans",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.airtable.com/developers/web/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Linear": {
+        "auth_evidence_url": {
+          "url": "https://linear.app/developers/oauth-2-0-authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://linear.app/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://linear.app/developers",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Jira": {
+        "auth_evidence_url": {
+          "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.atlassian.com/software/jira/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.atlassian.com/server/jira/platform/rest/v11002",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Asana": {
+        "auth_evidence_url": {
+          "url": "https://developers.asana.com/docs/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.asana.com/docs/personal-access-token",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.asana.com/docs/authentication",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Monday.com": {
+        "auth_evidence_url": {
+          "url": "https://developer.monday.com/api-reference/docs/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.monday.com/api-reference",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.monday.com/api-reference",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "ClickUp": {
+        "auth_evidence_url": {
+          "url": "https://developer.clickup.com/docs/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.clickup.com/docs/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developer.clickup.com/docs/Getting%20Started",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Coda": {
+        "auth_evidence_url": {
+          "url": "https://coda.io/developers",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.postman.com/codaio/coda-workspace/collection/0vy7uxn/coda-api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://coda.io/developers",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Smartsheet": {
+        "auth_evidence_url": {
+          "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.smartsheet.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.smartsheet.com/api/smartsheet/openapi/users",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Harvest": {
+        "auth_evidence_url": {
+          "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://support.getharvest.com/hc/en-us/articles/360048180732-The-Harvest-API",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Stripe": {
+        "auth_evidence_url": {
+          "url": "https://docs.stripe.com/api/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.stripe.com/development",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.stripe.com/api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Plaid": {
+        "auth_evidence_url": {
+          "url": "https://plaid.com/docs/api/oauth",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://support.plaid.com/hc/en-us/articles/16194695660311-Can-I-use-Plaid-for-free",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://plaid.com/docs",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Binance": {
+        "auth_evidence_url": {
+          "url": "https://developers.binance.com/en/docs/products/binance-pay-merchant/authentication",
+          "status": 202,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.binance.com/en/binance-api",
+          "status": 202,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.binance.com/en/docs",
+          "status": 202,
+          "reachable": true
+        }
+      },
+      "Paygent Connect": {
+        "auth_evidence_url": {
+          "url": "https://docs.payaconnect.com/developers/api/endpoints/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.payaconnect.com/developers",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.payaconnect.com/developers",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "iPayX": {
+        "auth_evidence_url": {
+          "url": "https://ipayx.ai/docs",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://ipayx.ai/docs",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://ipayx.ai/docs",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "QuickBooks": {
+        "auth_evidence_url": {
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/get-started",
+          "status": "HTTPSConnectionPool(host='developer.intuit.com', port=443): Read timed out. (read timeout=10)",
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/get-started",
+          "status": "HTTPSConnectionPool(host='developer.intuit.com', port=443): Read timed out. (read timeout=10)",
+          "reachable": false
+        }
+      },
+      "Xero": {
+        "auth_evidence_url": {
+          "url": "https://developer.xero.com/documentation/guides/oauth2/overview",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developer.xero.com/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/xeroapi",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Brex": {
+        "auth_evidence_url": {
+          "url": "https://developer.brex.com/guides/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://www.openbankingtracker.com/provider/brex/apis",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://www.brex.com/support/brex-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Ramp": {
+        "auth_evidence_url": {
+          "url": "https://docs.ramp.com/developer-api/v1/getting-started",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://docs.ramp.com/developer-api/v1/getting-started",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.ramp.com/developer-api/v1/getting-started",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "PitchBook": {
+        "auth_evidence_url": {
+          "url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+          "status": "HTTPSConnectionPool(host='documenter.getpostman.com', port=443): Read timed out. (read timeout=10)",
+          "reachable": false
+        },
+        "self_serve_evidence_url": {
+          "url": "https://pitchbook.com/products/direct-access-data/api",
+          "status": 403,
+          "reachable": false
+        },
+        "api_evidence_url": {
+          "url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "NotebookLM": {
+        "auth_evidence_url": {
+          "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://felloai.com/notebooklm-pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Otter AI": {
+        "auth_evidence_url": {
+          "url": "https://developer-guides.tryotter.com/api-reference",
+          "status": 404,
+          "reachable": false
+        },
+        "self_serve_evidence_url": {
+          "url": "https://otter.ai/signup",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+          "status": 403,
+          "reachable": false
+        }
+      },
+      "Fathom": {
+        "auth_evidence_url": {
+          "url": "https://developers.fathom.ai/sdks/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://help.fathom.video/en/articles/8368641",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.fathom.ai/api-overview",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Consensus": {
+        "auth_evidence_url": {
+          "url": "https://support.goconsensus.com/consensus-api-documents",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://support.goconsensus.com/consensus-api-documents",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://consensus.app/home/api",
+          "status": 403,
+          "reachable": false
+        }
+      },
+      "Reducto": {
+        "auth_evidence_url": {
+          "url": "https://docs.reducto.ai/studio-account",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://reducto.ai/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://docs.reducto.ai/quickstart",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Devin": {
+        "auth_evidence_url": {
+          "url": "https://docs.devin.ai/api-reference/authentication",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://devin.ai/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://mindcloud.co/docs/universal/rest/devin/latest",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Higgsfield": {
+        "auth_evidence_url": {
+          "url": "https://mindcloud.co/docs/universal/rest/higgsfield-ai/latest",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://higgsfield.ai/pricing",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://apps.make.com/higgsfield-ai-sxl99v",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Mermaid CLI": {
+        "auth_evidence_url": {
+          "url": "https://github.com/mermaid-js/mermaid-cli",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://github.com/mermaid-js/mermaid-cli",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://github.com/mermaid-js/mermaid-cli",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "YouTube Transcript": {
+        "auth_evidence_url": {
+          "url": "https://dlthub.com/context/source/youtube-transcript-api",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://supadata.ai/blog/best-youtube-transcript-api",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://dlthub.com/context/source/youtube-transcript-api",
+          "status": 200,
+          "reachable": true
+        }
+      },
+      "Grain": {
+        "auth_evidence_url": {
+          "url": "https://developers.grain.com",
+          "status": 200,
+          "reachable": true
+        },
+        "self_serve_evidence_url": {
+          "url": "https://developers.grain.com",
+          "status": 200,
+          "reachable": true
+        },
+        "api_evidence_url": {
+          "url": "https://developers.grain.com",
+          "status": 200,
+          "reachable": true
+        }
+      }
+    },
+    "stats": {
+      "total_urls": 300,
+      "reachable": 279,
+      "broken": 21,
+      "empty": 0,
+      "reachable_pct": 93.0
+    }
+  },
+  "spot_check_template": [
+    {
+      "app_name": "Salesforce",
+      "agent_auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST+GraphQL",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.9,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Slack",
+      "agent_auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.97,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Stripe",
+      "agent_auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.99,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "GitHub",
+      "agent_auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.95,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Shopify",
+      "agent_auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST+GraphQL",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.95,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Linear",
+      "agent_auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "GraphQL",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.95,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Klaviyo",
+      "agent_auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.95,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Supabase",
+      "agent_auth_methods": [
+        "JWT",
+        "Token",
+        "Other"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.89,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Ahrefs",
+      "agent_auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready with caveats",
+      "agent_confidence": 0.9,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Front",
+      "agent_auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.91,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Twenty",
+      "agent_auth_methods": [
+        "API Key"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST+GraphQL",
+      "agent_api_breadth": "Broad",
+      "agent_buildability": "Ready",
+      "agent_confidence": 0.89,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Pylon",
+      "agent_auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "agent_self_serve": true,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Moderate",
+      "agent_buildability": "Ready with caveats",
+      "agent_confidence": 0.89,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    },
+    {
+      "app_name": "Paygent Connect",
+      "agent_auth_methods": [
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "agent_self_serve": false,
+      "agent_api_type": "REST",
+      "agent_api_breadth": "Moderate",
+      "agent_buildability": "Ready with caveats",
+      "agent_confidence": 0.8,
+      "verified_auth_correct": null,
+      "verified_self_serve_correct": null,
+      "verified_api_type_correct": null,
+      "verified_buildability_correct": null,
+      "notes": ""
+    }
+  ],
+  "accuracy": null
+}

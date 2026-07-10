@@ -1,0 +1,1375 @@
+{
+  "auth_distribution": {
+    "overall": {
+      "OAuth2": 67,
+      "Token": 66,
+      "API Key": 50,
+      "Basic": 16,
+      "Other": 11,
+      "JWT": 6,
+      "HMAC": 3,
+      "None": 2
+    },
+    "by_category": {
+      "CRM and Sales": {
+        "OAuth2": 8,
+        "Token": 6,
+        "API Key": 8,
+        "Other": 2,
+        "Basic": 1,
+        "HMAC": 1
+      },
+      "Support and Helpdesk": {
+        "Token": 6,
+        "OAuth2": 7,
+        "API Key": 5,
+        "Basic": 3
+      },
+      "Communications and Messaging": {
+        "OAuth2": 8,
+        "Token": 10,
+        "API Key": 3,
+        "Basic": 3,
+        "Other": 1,
+        "JWT": 1
+      },
+      "Marketing, Ads, Email and Social": {
+        "OAuth2": 8,
+        "Token": 6,
+        "API Key": 4,
+        "Basic": 2
+      },
+      "Ecommerce": {
+        "OAuth2": 8,
+        "Token": 7,
+        "API Key": 4,
+        "Other": 1,
+        "JWT": 1,
+        "HMAC": 1
+      },
+      "Data, SEO and Scraping": {
+        "Basic": 2,
+        "API Key": 8,
+        "OAuth2": 1,
+        "Token": 4,
+        "JWT": 1
+      },
+      "Developer, Infra and Data platforms": {
+        "OAuth2": 7,
+        "Token": 8,
+        "API Key": 4,
+        "JWT": 2,
+        "Other": 3,
+        "Basic": 2
+      },
+      "Productivity and Project Management": {
+        "OAuth2": 9,
+        "Token": 9,
+        "API Key": 3,
+        "Basic": 1,
+        "JWT": 1
+      },
+      "Finance and Fintech": {
+        "API Key": 5,
+        "OAuth2": 6,
+        "Token": 6,
+        "HMAC": 1,
+        "Basic": 2,
+        "Other": 1
+      },
+      "AI, Research and Media-native": {
+        "OAuth2": 5,
+        "Other": 3,
+        "Token": 4,
+        "API Key": 6,
+        "None": 2
+      }
+    }
+  },
+  "self_serve": {
+    "overall_rate": 89.0,
+    "total_self_serve": 89,
+    "total_gated": 11,
+    "by_category": {
+      "CRM and Sales": {
+        "yes": 9,
+        "no": 1
+      },
+      "Support and Helpdesk": {
+        "yes": 9,
+        "no": 1
+      },
+      "Communications and Messaging": {
+        "yes": 10,
+        "no": 0
+      },
+      "Marketing, Ads, Email and Social": {
+        "yes": 9,
+        "no": 1
+      },
+      "Ecommerce": {
+        "yes": 8,
+        "no": 2
+      },
+      "Data, SEO and Scraping": {
+        "yes": 8,
+        "no": 2
+      },
+      "Developer, Infra and Data platforms": {
+        "yes": 10,
+        "no": 0
+      },
+      "Productivity and Project Management": {
+        "yes": 10,
+        "no": 0
+      },
+      "Finance and Fintech": {
+        "yes": 7,
+        "no": 3
+      },
+      "AI, Research and Media-native": {
+        "yes": 9,
+        "no": 1
+      }
+    }
+  },
+  "api_landscape": {
+    "types": {
+      "REST": 87,
+      "REST+GraphQL": 7,
+      "GraphQL": 3,
+      "Other": 2,
+      "CLI-only": 1
+    },
+    "breadth": {
+      "Broad": 75,
+      "Moderate": 22,
+      "Narrow": 2,
+      "Unknown": 1
+    }
+  },
+  "buildability": {
+    "verdicts": {
+      "Ready": 75,
+      "Ready with caveats": 24,
+      "Blocked": 1
+    },
+    "top_blockers": {
+      "API access approval ambiguity": 1,
+      "API access requires existing DealCloud account permissions/admin enablement.": 1,
+      "API token creation restricted to Admin users; free/self-serve developer tier unclear.": 1,
+      "API access tied to existing Gladly account and sandbox/setup may require contacting support or purchasing access.": 1,
+      "Advertising API access requires LinkedIn approval": 1,
+      "API access approval tiers and rate limits": 1,
+      "Access to Commerce Cloud environments and API credentials may require partnership or paid enterprise access.": 1,
+      "API access tied to paid Squarespace commerce plans; some APIs noted as maintenance mode.": 1,
+      "Developer onboarding requires a Professional selling account and seller authorization.": 1,
+      "Developer access appears gated behind login/password-protected docs.": 1
+    },
+    "by_category": {
+      "CRM and Sales": {
+        "Ready": 8,
+        "Ready with caveats": 2
+      },
+      "Support and Helpdesk": {
+        "Ready": 8,
+        "Ready with caveats": 2
+      },
+      "Communications and Messaging": {
+        "Ready": 10
+      },
+      "Marketing, Ads, Email and Social": {
+        "Ready": 8,
+        "Ready with caveats": 2
+      },
+      "Ecommerce": {
+        "Ready": 6,
+        "Ready with caveats": 4
+      },
+      "Data, SEO and Scraping": {
+        "Ready": 5,
+        "Ready with caveats": 5
+      },
+      "Developer, Infra and Data platforms": {
+        "Ready": 10
+      },
+      "Productivity and Project Management": {
+        "Ready": 10
+      },
+      "Finance and Fintech": {
+        "Ready": 5,
+        "Ready with caveats": 4,
+        "Blocked": 1
+      },
+      "AI, Research and Media-native": {
+        "Ready with caveats": 5,
+        "Ready": 5
+      }
+    }
+  },
+  "easy_wins": [
+    {
+      "app_name": "Salesforce",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.9
+    },
+    {
+      "app_name": "HubSpot",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "Token",
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Pipedrive",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "Twenty",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "Podio",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "Token",
+        "API Key",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "Zoho CRM",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Close",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "Copper",
+      "category": "CRM and Sales",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token",
+        "HMAC"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.86
+    },
+    {
+      "app_name": "Zendesk",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.78
+    },
+    {
+      "app_name": "Intercom",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Freshdesk",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.88
+    },
+    {
+      "app_name": "Front",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "LiveAgent",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.85
+    },
+    {
+      "app_name": "Help Scout",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Gorgias",
+      "category": "Support and Helpdesk",
+      "auth_methods": [
+        "Basic",
+        "API Key",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Slack",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.97
+    },
+    {
+      "app_name": "Twilio",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.96
+    },
+    {
+      "app_name": "Zoho Cliq",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.76
+    },
+    {
+      "app_name": "Lark (Larksuite)",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "Pumble",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "Token",
+        "API Key",
+        "OAuth2"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.77
+    },
+    {
+      "app_name": "Discord",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.96
+    },
+    {
+      "app_name": "Telegram",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "Token",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.82
+    },
+    {
+      "app_name": "WhatsApp Business",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "Aircall",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "Basic",
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.84
+    },
+    {
+      "app_name": "Vonage",
+      "category": "Communications and Messaging",
+      "auth_methods": [
+        "Basic",
+        "JWT",
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Google Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Meta Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.9
+    },
+    {
+      "app_name": "GoHighLevel",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.9
+    },
+    {
+      "app_name": "Mailchimp",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Klaviyo",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "systeme.io",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.9
+    },
+    {
+      "app_name": "Threads (Meta)",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "SendGrid",
+      "category": "Marketing, Ads, Email and Social",
+      "auth_methods": [
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Shopify",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "WooCommerce",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "API Key",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.93
+    },
+    {
+      "app_name": "BigCommerce",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Magento (Adobe Commerce)",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "Ecwid",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "OAuth2",
+        "Token",
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "Gumroad",
+      "category": "Ecommerce",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.86
+    },
+    {
+      "app_name": "DataForSEO",
+      "category": "Data, SEO and Scraping",
+      "auth_methods": [
+        "Basic"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.93
+    },
+    {
+      "app_name": "SE Ranking",
+      "category": "Data, SEO and Scraping",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.96
+    },
+    {
+      "app_name": "Apify",
+      "category": "Data, SEO and Scraping",
+      "auth_methods": [
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Firecrawl",
+      "category": "Data, SEO and Scraping",
+      "auth_methods": [
+        "API Key",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Bright Data",
+      "category": "Data, SEO and Scraping",
+      "auth_methods": [
+        "API Key",
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "GitHub",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Vercel",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "Token",
+        "API Key",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "Netlify",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.96
+    },
+    {
+      "app_name": "Cloudflare",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "API Key",
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Supabase",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "JWT",
+        "Token",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "Neo4j",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "Basic",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Snowflake",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "Token",
+        "JWT",
+        "OAuth2",
+        "Basic",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.89
+    },
+    {
+      "app_name": "MongoDB Atlas",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Other"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Datadog",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Sentry",
+      "category": "Developer, Infra and Data platforms",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Notion",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Airtable",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "Token",
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.93
+    },
+    {
+      "app_name": "Jira",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "Basic",
+        "OAuth2",
+        "JWT",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.93
+    },
+    {
+      "app_name": "Asana",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "ClickUp",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.95
+    },
+    {
+      "app_name": "Coda",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Smartsheet",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Harvest",
+      "category": "Productivity and Project Management",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "Stripe",
+      "category": "Finance and Fintech",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.99
+    },
+    {
+      "app_name": "Binance",
+      "category": "Finance and Fintech",
+      "auth_methods": [
+        "API Key",
+        "HMAC"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.92
+    },
+    {
+      "app_name": "QuickBooks",
+      "category": "Finance and Fintech",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "Xero",
+      "category": "Finance and Fintech",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "Brex",
+      "category": "Finance and Fintech",
+      "auth_methods": [
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.88
+    },
+    {
+      "app_name": "Otter AI",
+      "category": "AI, Research and Media-native",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.91
+    },
+    {
+      "app_name": "Fathom",
+      "category": "AI, Research and Media-native",
+      "auth_methods": [
+        "API Key",
+        "Token",
+        "OAuth2"
+      ],
+      "api_breadth": "Moderate",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "Reducto",
+      "category": "AI, Research and Media-native",
+      "auth_methods": [
+        "API Key"
+      ],
+      "api_breadth": "Broad",
+      "confidence": 0.94
+    },
+    {
+      "app_name": "YouTube Transcript",
+      "category": "AI, Research and Media-native",
+      "auth_methods": [
+        "API Key",
+        "None"
+      ],
+      "api_breadth": "Narrow",
+      "confidence": 0.8
+    }
+  ],
+  "needs_outreach": [
+    {
+      "app_name": "DealCloud",
+      "category": "CRM and Sales",
+      "blocker": "API access requires existing DealCloud account permissions/admin enablement.",
+      "self_serve": false
+    },
+    {
+      "app_name": "Gladly",
+      "category": "Support and Helpdesk",
+      "blocker": "API access tied to existing Gladly account and sandbox/setup may require contacting support or purchasing access.",
+      "self_serve": false
+    },
+    {
+      "app_name": "LinkedIn Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "blocker": "Advertising API access requires LinkedIn approval",
+      "self_serve": false
+    },
+    {
+      "app_name": "Salesforce Commerce Cloud",
+      "category": "Ecommerce",
+      "blocker": "Access to Commerce Cloud environments and API credentials may require partnership or paid enterprise access.",
+      "self_serve": false
+    },
+    {
+      "app_name": "FanBasis",
+      "category": "Ecommerce",
+      "blocker": "Developer access appears gated behind login/password-protected docs.",
+      "self_serve": false
+    },
+    {
+      "app_name": "MrScraper",
+      "category": "Data, SEO and Scraping",
+      "blocker": "Unclear self-serve developer onboarding/API credential access",
+      "self_serve": false
+    },
+    {
+      "app_name": "Waterfall.io",
+      "category": "Data, SEO and Scraping",
+      "blocker": "Likely sales-gated or non-self-serve API access",
+      "self_serve": false
+    },
+    {
+      "app_name": "Paygent Connect",
+      "category": "Finance and Fintech",
+      "blocker": "Developer portal access requires application/request approval.",
+      "self_serve": false
+    },
+    {
+      "app_name": "iPayX",
+      "category": "Finance and Fintech",
+      "blocker": "Insufficient public API and authentication information",
+      "self_serve": false
+    },
+    {
+      "app_name": "PitchBook",
+      "category": "Finance and Fintech",
+      "blocker": "API access appears gated behind commercial subscription/trial approval rather than fully self-serve.",
+      "self_serve": false
+    },
+    {
+      "app_name": "Grain",
+      "category": "AI, Research and Media-native",
+      "blocker": "OAuth app credentials require manual approval/request; API appears beta.",
+      "self_serve": false
+    }
+  ],
+  "mcp_coverage": {
+    "count": 87,
+    "apps": [
+      {
+        "app_name": "Salesforce",
+        "detail": "Salesforce provides official Hosted MCP Servers documentation for connecting AI agents to Salesforce via MCP and OAuth. There is also a community MCP Salesforce connector on GitHub supporting SOQL/SOSL queries and CRUD operations. Official docs: https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html Community server: https://github.com/smn2gnt/MCP-Salesforce"
+      },
+      {
+        "app_name": "HubSpot",
+        "detail": "HubSpot officially provides MCP servers for CRM access and developer platform tooling: https://developers.hubspot.com/ai-tools/mcp . There is also a community MCP server at https://github.com/baryhuang/mcp-hubspot."
+      },
+      {
+        "app_name": "Pipedrive",
+        "detail": "Both community and official MCP servers exist. Community server: https://mcp.so/server/pipedrive-mcp-server/WillDent . Official native MCP server announced by Pipedrive enabling AI assistants to interact with CRM data in real time: https://www.destinationcrm.com/Articles/CRM-News/CRM-Across-the-Wire/Pipedrive-Launches-Native-MCP-Server-175523.aspx"
+      },
+      {
+        "app_name": "Attio",
+        "detail": "Official hosted MCP server documented by Attio at https://docs.attio.com/mcp/overview using OAuth authentication and supporting full workspace access. Community MCP server also exists at https://github.com/kesslerio/attio-mcp-server claiming comprehensive CRM surface coverage and full CRUD support."
+      },
+      {
+        "app_name": "Twenty",
+        "detail": "Community MCP server exists: 'Twenty MCP Server' on LobeHub backed by GitHub repository igorwarzocha/twenty-mcp-server. It integrates with Twenty CRM via GraphQL and REST APIs using TWENTY_API_URL and TWENTY_API_KEY environment variables. URL: https://lobehub.com/mcp/igorwarzocha-twenty-mcp-server"
+      },
+      {
+        "app_name": "Podio",
+        "detail": "Official Podio MCP server documented by ShareFile/Podio. Server available at https://mcp.podio.com and supports AI assistants like ChatGPT, Claude Desktop, and Microsoft Copilot Studio. Docs: https://docs.sharefile.com/en-us/podio/using-podio/general-features/podio-mcp-server.html"
+      },
+      {
+        "app_name": "Zoho CRM",
+        "detail": "Community MCP servers exist for Zoho CRM, including an open-source GitHub project (junnaisystems/zoho-crm-mcp) supporting OAuth authentication and operations such as querying, creating, updating, and searching CRM records. Additional MCP listing available on AIBase."
+      },
+      {
+        "app_name": "Zendesk",
+        "detail": "Multiple community MCP servers exist for Zendesk, including https://github.com/mattcoatsworth/zendesk-mcp-server and https://github.com/reminia/zendesk-mcp-server. They provide comprehensive Zendesk API integrations for tickets, comments, users, Support, Talk, Chat, and Guide."
+      },
+      {
+        "app_name": "Intercom",
+        "detail": "Intercom hosts an official remote MCP server at https://mcp.intercom.com/mcp. GitHub repository and marketplace listings describe support for secure access to Intercom conversations, contacts, and other data via MCP with 6 available tools. Repository: https://github.com/intercom/intercom-mcp-server"
+      },
+      {
+        "app_name": "Freshdesk",
+        "detail": "Community MCP servers exist for Freshdesk, including freshdeck-mcp on mcpservers.org and the GitHub project NeuraLegion/freshdesk_mcp providing 41 tools for tickets, contacts, companies, conversations, and more via Freshdesk API v2. No official Freshdesk MCP server found in results, though Freshservice has an official Freshworks MCP integration EAP."
+      },
+      {
+        "app_name": "Front",
+        "detail": "A community-created MCP server for FrontApp is discussed in the Front community forum, but no official MCP server was identified from the search results. Community thread: https://community.front.com/developer-discussion-39/is-anyone-working-on-creating-an-mcp-server-for-frontapp-2309"
+      },
+      {
+        "app_name": "Pylon",
+        "detail": "Official Pylon MCP Server documented by Pylon. It exposes Pylon data and actions to AI tools via Model Context Protocol, supporting read/write operations on issues, accounts, and contacts with OAuth authentication. Docs: https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+      },
+      {
+        "app_name": "Help Scout",
+        "detail": "Community and third-party MCP servers exist. Example: 'Help Scout MCP Server' on mcp.so provides conversation search, customer profiles, mailbox management, analytics, OAuth2 and token auth support. StackOne also provides a hosted Help Scout MCP server with 36 actions. Sources: https://mcp.so/server/help-scout-mcp-server/drewburchfield and https://www.stackone.com/connectors/helpscout/mcp"
+      },
+      {
+        "app_name": "Gorgias",
+        "detail": "Official Gorgias MCP app/server exists. Gorgias documentation describes connecting AI assistants via MCP to access helpdesk data and settings. Community listings and Composio integration pages also reference the Gorgias MCP server. Sources: https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546 and https://mcpmarket.com/server/gorgias"
+      },
+      {
+        "app_name": "Slack",
+        "detail": "Slack provides an official Slack MCP server documented by Slack Developer Docs. It supports searching channels, retrieving and sending messages, managing canvases, and managing users through MCP clients. Community MCP servers also exist."
+      },
+      {
+        "app_name": "Twilio",
+        "detail": "Official Twilio MCP server exists and is documented by Twilio. Public Beta MCP server exposes Twilio's full API surface (over 1,800 endpoints across 30+ products). Hosted at mcp.twilio.com/docs, with additional official monorepo references on mcpservers.org."
+      },
+      {
+        "app_name": "Zoho Cliq",
+        "detail": "Zoho offers Zoho MCP, an MCP infrastructure/service for exposing Zoho app tools and actions to AI agents via the Model Context Protocol. The search results do not explicitly confirm a dedicated Zoho Cliq MCP server, but Zoho MCP supports Zoho services broadly. https://www.zoho.com/mcp/services/zoho-services.html"
+      },
+      {
+        "app_name": "Lark (Larksuite)",
+        "detail": "Official MCP server exists: 'larksuite/lark-openapi-mcp' on GitHub. It exposes Feishu/Lark Open Platform APIs as MCP tools for AI agents and supports document processing, messaging, calendar scheduling, and more. Also listed on mcp.so."
+      },
+      {
+        "app_name": "Pumble",
+        "detail": "Official Pumble MCP server documented by Pumble Help Center at https://mcp.pumble.com/mcp. Supports Claude, Gemini, Codex, and CLI integrations using app keys and user/bot tokens. Community listing also exists on MCP Market describing 26 strongly-typed tools over the Pumble REST API."
+      },
+      {
+        "app_name": "Discord",
+        "detail": "Multiple community MCP servers exist for Discord, including 'discord-mcp' (https://mcpservers.org/servers/exilproductions/discord-mcp) with broad server/channel/message management support, and GitHub projects such as https://github.com/v-3/discordmcp."
+      },
+      {
+        "app_name": "Telegram",
+        "detail": "Multiple community MCP servers exist for Telegram, including BrainDAO/mcp-telegram on GitHub for interacting with Telegram bots/channels and MCP Telegram implementations listed on MCP directories. Example: https://github.com/IQAIcom/mcp-telegram"
+      },
+      {
+        "app_name": "WhatsApp Business",
+        "detail": "Community MCP servers exist for WhatsApp/WhatsApp Business API integrations, including 'WhatsApp Business API MCP Server' (https://mcp.so/server/Whatsapp-MCP-Server/mattcoatsworth) and GitHub project https://github.com/lharries/whatsapp-mcp."
+      },
+      {
+        "app_name": "Vonage",
+        "detail": "Official Vonage MCP Server exists with documentation and technical details. Covers Vonage APIs for Voice, Messaging, Video, and documentation search via the Model Context Protocol. Docs: https://developer.vonage.com/en/mcp-server/overview"
+      },
+      {
+        "app_name": "Google Ads",
+        "detail": "Official Google Ads MCP server exists from Google Ads developers. Docs available at https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server and source referenced at https://github.com/googleads/google-ads-mcp. The MCP server enables natural-language access to campaign data and management capabilities."
+      },
+      {
+        "app_name": "Meta Ads",
+        "detail": "Community MCP server exists: 'Meta Ads MCP Server' covering 54 tools for campaigns, ad sets, ads, creatives, insights, targeting, Pages, and more via Meta Graph API v22.0. Additional reports mention an official Meta Ads MCP released in 2026."
+      },
+      {
+        "app_name": "LinkedIn Ads",
+        "detail": "Multiple community MCP servers exist for LinkedIn Ads, including https://github.com/radiateb2b/mcp-linkedinads and listings on LobeHub and MCPServers.org. These servers allow AI assistants to analyze LinkedIn Ads data using LinkedIn access tokens."
+      },
+      {
+        "app_name": "GoHighLevel",
+        "detail": "Official HighLevel MCP server documented by HighLevel. Supports querying and automating HighLevel data/tools via MCP clients using Private Integration Tokens. Docs: https://marketplace.gohighlevel.com/docs/other/mcp . Additional setup guide: https://help.gohighlevel.com/support/solutions/articles/155000007981-highlevel-mcp-server-connect-ai-agents-to-highlevel-tools"
+      },
+      {
+        "app_name": "Mailchimp",
+        "detail": "Community MCP servers exist for Mailchimp, including an open-source GitHub project (damientilman/mailchimp-mcp-server) covering campaigns, audiences, members, automations, reporting, e-commerce, landing pages, surveys, and more. Also listed on Apify and LobeHub."
+      },
+      {
+        "app_name": "Klaviyo",
+        "detail": "Both community and official MCP servers exist. A public GitHub project (https://github.com/mattcoatsworth/Klaviyo-MCP-Server) provides broad API coverage for profiles, lists, segments, campaigns, and flows. Klaviyo also announced an official MCP server available to customers in 2025: https://investors.klaviyo.com/news/news-details/2025/Klaviyo-MCP-server-helps-marketers-move-faster-with-AI-2025-twExpbyTVx/default.aspx"
+      },
+      {
+        "app_name": "systeme.io",
+        "detail": "Official systeme.io MCP server exists. Documentation states it supports contact management (contacts, tags, custom fields), newsletter management, and funnels. Integration guides are available for ChatGPT and Claude. Evidence: https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp"
+      },
+      {
+        "app_name": "Pinterest",
+        "detail": "Community MCP servers exist for Pinterest API integration, including https://github.com/collactivelabs/pinterest-mcp-server and a LobeHub-listed Pinterest MCP server for pins, boards, and analytics. No official public Pinterest MCP server was found."
+      },
+      {
+        "app_name": "Threads (Meta)",
+        "detail": "Community MCP servers exist for Threads integrations, including ThreadsMcpNet (.NET MCP server for content creation on Threads) and a TypeScript-based threads-mcp server. There is also a broader Meta Platform MCP server covering Instagram Graph API and Threads API. Sources: https://medium.com/@tttndev13/a-mcp-server-for-content-creation-on-threads-7cb26cc784ca , https://mcp.aibase.com/server/1916354827725545473 , https://mcpmarket.com/server/meta-platform"
+      },
+      {
+        "app_name": "SendGrid",
+        "detail": "Community and tutorial MCP servers exist for SendGrid. Examples include the open-source GitHub project 'sendgrid-mcp' and Twilio's blog tutorial for building a SendGrid MCP server for AI email workflows. URLs: https://github.com/garethcull/sendgrid-mcp and https://www.twilio.com/en-us/blog/developers/community/build-a-sendgrid-mcp-server-for-ai-email-workflows"
+      },
+      {
+        "app_name": "Shopify",
+        "detail": "Both official/community MCP servers exist. Shopify/dev-mcp provides MCP access to Shopify APIs and docs; community project antoineschaller/shopify-mcp-server integrates with Shopify Admin API and exposes tools for products, orders, customers, inventory, and analytics. Sources: https://www.augmentcode.com/mcp/shopify-dev-mcp and https://github.com/antoineschaller/shopify-mcp-server"
+      },
+      {
+        "app_name": "WooCommerce",
+        "detail": "WooCommerce has official MCP integration documentation at https://developer.woocommerce.com/docs/features/mcp describing native MCP support and a deprecated MCP endpoint. Community MCP servers also exist, including https://github.com/techspawn/woocommerce-mcp-server and StackOne's hosted MCP connector."
+      },
+      {
+        "app_name": "BigCommerce",
+        "detail": "Community MCP servers exist for BigCommerce, including 'bigcommerce-api-mcp' on GitHub and listings on MCP Market and LobeHub. These servers expose BigCommerce REST API operations for products, customers, and orders. URLs: https://github.com/isaacgounton/bigcommerce-api-mcp and https://mcpmarket.com/server/bigcommerce"
+      },
+      {
+        "app_name": "Salesforce Commerce Cloud",
+        "detail": "Community MCP server exists: 'Commerce Cloud MCP Server' on mcpservers.org connects AI applications to Salesforce Commerce Cloud via MCP using OCAPI access. Additional Salesforce-related MCP server projects also exist on GitHub. No official Commerce Cloud MCP server confirmed."
+      },
+      {
+        "app_name": "Magento (Adobe Commerce)",
+        "detail": "Community MCP servers exist for Magento/Adobe Commerce, including Magento Adobe Commerce MCP Server and Magento MCP Server with 30+ admin tools for catalog management, promotions, CMS, and diagnostics. Sources: https://mcpmarket.com/server/magento-adobe-commerce and https://lobehub.com/mcp/thomastx05-magento-mcp"
+      },
+      {
+        "app_name": "Squarespace",
+        "detail": "A community MCP server exists on GitHub: https://github.com/BusyBee3333/squarespace-mcp-2026-complete . It claims broad Squarespace API coverage with 67+ tools and OAuth2 support. No official Squarespace MCP server was found in the provided results."
+      },
+      {
+        "app_name": "Gumroad",
+        "detail": "Community MCP servers exist for Gumroad API integration, including open-source Gumroad MCP Server implementations listed on MCP marketplaces and GitHub integrations. Examples: https://mcp.so/server/gumroad-mcp/rmarescu and https://lobehub.com/pl/mcp/rmarescu-gumroad-mcp"
+      },
+      {
+        "app_name": "Amazon Selling Partner",
+        "detail": "Community MCP servers exist for Amazon Selling Partner API, including https://github.com/jay-trivedi/amazon_sp_mcp and additional SP-API MCP implementations listed on MCP directories such as LobeHub and MCP Market."
+      },
+      {
+        "app_name": "DataForSEO",
+        "detail": "Official DataForSEO MCP server announced by DataForSEO for connecting AI models to SEO data: https://dataforseo.com/blog/dataforseo-mcp-server-bridging-the-gap-between-ai-models-and-seo-data . Community MCP implementation also exists at https://github.com/Skobyn/dataforseo-mcp-server and directory listing at https://mcp.so/server/mcp-server-typescript/dataforseo"
+      },
+      {
+        "app_name": "SE Ranking",
+        "detail": "SE Ranking provides an official MCP Server at https://api.seranking.com/mcp with integrations for Claude, Cursor, Codex, ChatGPT, and other MCP-compatible clients. It exposes live SEO and GEO data through the API."
+      },
+      {
+        "app_name": "Ahrefs",
+        "detail": "Ahrefs provides an official hosted MCP server for MCP-compatible AI tools. Endpoint referenced as https://api.ahrefs.com/mcp/mcp. Docs: https://docs.ahrefs.com/en/mcp/docs/introduction"
+      },
+      {
+        "app_name": "Apify",
+        "detail": "An official/community MCP server repository exists: 'actors-mcp-server' by Apify for running Apify Actors through the Model Context Protocol. Apify also has an MCP servers category in its store."
+      },
+      {
+        "app_name": "Firecrawl",
+        "detail": "Official MCP server exists via GitHub and npm package 'firecrawl-mcp'. Supports search, scrape, crawl, extract, interact, and monitor capabilities. Hosted endpoint available at https://mcp.firecrawl.dev/v2/mcp with optional keyless free tier for some tools. Sources: https://github.com/firecrawl/firecrawl-mcp-server and https://www.npmjs.com/package/firecrawl-mcp"
+      },
+      {
+        "app_name": "Bright Data",
+        "detail": "Bright Data offers an official MCP server called 'The Web MCP' with free tier support for AI agents. It supports web search, scraping as Markdown, structured data extraction, browser automation, and hosted/local deployment options. Sources: https://brightdata.com/ai/mcp-server and https://brightdata.com/pricing/mcp-server"
+      },
+      {
+        "app_name": "Sherlock",
+        "detail": "Community MCP server exists: Burnsedia/sherlock-mcp provides FastMCP integration for Sherlock OSINT username searches across 400+ platforms. https://github.com/Burnsedia/sherlock-mcp"
+      },
+      {
+        "app_name": "Clay",
+        "detail": "Clay has an official MCP offering described at https://www.clay.com/guides/clay-mcp exposing data providers, AI research agents, and workflows inside AI assistants. Community/open-source MCP server also exists at https://github.com/clay-inc/clay-mcp."
+      },
+      {
+        "app_name": "GitHub",
+        "detail": "GitHub documents MCP support for GitHub Copilot and references a GitHub MCP server and MCP Registry. Docs mention 'Using the GitHub MCP Server in your IDE' and the github/github-mcp-server repository."
+      },
+      {
+        "app_name": "Vercel",
+        "detail": "Vercel provides MCP documentation and tooling including an MCP adapter for Next.js apps. Docs explain MCP architecture and available MCP servers; community examples show building remote MCP servers with Vercel's MCP Adapter. Sources: https://vercel.com/docs/mcp and https://medium.com/@kevin.moechel/building-a-remote-mcp-server-with-next-js-and-vercels-mcp-adapter-d078b27a9119"
+      },
+      {
+        "app_name": "Netlify",
+        "detail": "Official Netlify MCP server available at https://github.com/netlify/netlify-mcp. It enables AI agents to use the Netlify API and CLI to create projects, deploy, and manage Netlify resources. Netlify also announced the official MCP server publicly in 2025."
+      },
+      {
+        "app_name": "Cloudflare",
+        "detail": "Cloudflare provides official MCP support and managed MCP servers. The Cloudflare API MCP server exposes access to the full Cloudflare API (over 2,500 endpoints) through MCP tools. Docs: https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare"
+      },
+      {
+        "app_name": "Supabase",
+        "detail": "Supabase provides an official MCP (Model Context Protocol) server for connecting AI tools to Supabase projects, enabling database management and natural language operations. Official feature page: https://supabase.com/features/mcp-server . Community implementation also exists at https://github.com/coleam00/supabase-mcp"
+      },
+      {
+        "app_name": "Neo4j",
+        "detail": "Official Neo4j MCP server/documentation exists. Neo4j MCP provides structured access to Neo4j graph databases for MCP-compatible AI clients. Community GitHub repo also exists at https://github.com/neo4j-contrib/mcp-neo4j."
+      },
+      {
+        "app_name": "Snowflake",
+        "detail": "Snowflake provides an official Snowflake-managed MCP server in public preview supporting Cortex Analyst, Cortex Search, Cortex Agents, custom tools, and SQL execution. Community MCP servers also exist for Snowflake database access."
+      },
+      {
+        "app_name": "MongoDB Atlas",
+        "detail": "Official MongoDB MCP Server exists. GitHub repository mongodb-js/mongodb-mcp-server and official Docker image support interacting with MongoDB databases and MongoDB Atlas using Atlas API credentials or MongoDB connection strings. Community listing also exists on MCP Market. URLs: https://github.com/mongodb-js/mongodb-mcp-server , https://hub.docker.com/r/mongodb/mongodb-mcp-server , https://mcpmarket.com/server/mongodb-atlas"
+      },
+      {
+        "app_name": "Datadog",
+        "detail": "Community MCP server exists: 'Datadog MCP Server' by magistersart with GitHub/Docker distribution, using Datadog API and application keys. Evidence: https://lobehub.com/mcp/magistersart-dd-mcp . Datadog also publishes educational content about MCP servers: https://www.datadoghq.com/knowledge-center/mcp-server"
+      },
+      {
+        "app_name": "Sentry",
+        "detail": "Sentry provides official MCP monitoring documentation for Model Context Protocol implementations. Community MCP servers also exist for accessing and analyzing Sentry issues and debugging information. Evidence: https://docs.sentry.io/ai/monitoring/mcp and https://mcpmarket.com/server/sentry"
+      },
+      {
+        "app_name": "Notion",
+        "detail": "Multiple community MCP servers exist for Notion, including the npm package 'notion-mcp-server' and the GitHub project 'suekou/mcp-notion-server', which expose Notion API operations to MCP-compatible AI clients. URLs: https://npmjs.com/package/notion-mcp-server?ref=pkgstats.com and https://github.com/suekou/mcp-notion-server"
+      },
+      {
+        "app_name": "Airtable",
+        "detail": "Community MCP servers exist for Airtable, including 'airtable-mcp-server' and listings on mcpservers.org and MCP Market. They support schema discovery and CRUD operations using Airtable Personal Access Tokens. Sources: https://mcpservers.org/servers/felores/airtable-mcp and https://www.augmentcode.com/mcp/airtable-mcp-server"
+      },
+      {
+        "app_name": "Linear",
+        "detail": "Community MCP servers exist for Linear, including Remote MCP and open-source Linear MCP Server implementations that expose Linear GraphQL API operations for AI assistants. Examples: https://www.remote-mcp.com/servers/linear and https://mcpservers.org/servers/linear-mcp-server"
+      },
+      {
+        "app_name": "Jira",
+        "detail": "Community/open-source MCP servers exist for Jira/Atlassian products, including the 'mcp-atlassian' project on PyPI supporting Jira Cloud and Server/Data Center. Additional guides from Workato and Medium describe Jira MCP server implementations."
+      },
+      {
+        "app_name": "Asana",
+        "detail": "Asana provides an official MCP server that allows AI assistants and tools to access and interact with the Asana Work Graph. Docs and compatible clients are published by Asana. References: https://developers.asana.com/docs/mcp-server and https://developers.asana.com/docs/mcp-clients"
+      },
+      {
+        "app_name": "Monday.com",
+        "detail": "Official monday.com MCP server exists. monday.com provides hosted MCP support and an official GitHub repository with MCP server packages such as @mondaydotcomorg/monday-api-mcp. Docs describe the MCP server as a wrapper around the monday.com Platform API. Sources: https://developer.monday.com/api-reference/docs/monday-mcp-security-overview and https://github.com/mondaycom/mcp"
+      },
+      {
+        "app_name": "ClickUp",
+        "detail": "Official ClickUp MCP server is available at https://mcp.clickup.com/mcp and supports AI assistants interacting with tasks, lists, folders, and docs. Official docs: https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server . Community MCP implementations also exist such as https://github.com/Nazruden/clickup-mcp-server"
+      },
+      {
+        "app_name": "Coda",
+        "detail": "Community MCP servers exist for Coda, including orellazri/coda-mcp on GitHub. These provide tools for listing, reading, creating, updating, duplicating, and renaming Coda pages and tables via the Coda API. Not officially maintained by Coda. Sources: https://github.com/orellazri/coda-mcp and https://lobehub.com/mcp/tjc-lp-coda-mcp-server"
+      },
+      {
+        "app_name": "Smartsheet",
+        "detail": "Official Smartsheet MCP Server announced by Smartsheet, providing read/write access to Sheets, Rows, Columns, Discussions, Comments, and Workspaces via Model Context Protocol. Community MCP servers also exist on GitHub and mcpservers.org. Official announcement: https://www.smartsheet.com/content-center/product-insights/product-updates/introducing-smartsheet-mcp-server"
+      },
+      {
+        "app_name": "Harvest",
+        "detail": "Multiple unofficial community MCP servers exist for Harvest API v2, including a Go-based server exposing all 64 Harvest API endpoints and a TypeScript MCP server for time tracking/project management. Sources: https://lobehub.com/mcp/valtirallc-harvest-mcp-server and https://mcpservers.org/servers/ianaleck/harvest-mcp-server"
+      },
+      {
+        "app_name": "Stripe",
+        "detail": "Stripe provides an official MCP server documented by Stripe. It allows AI agents to interact with the Stripe API and knowledge base, with tools for API reads/writes and search. Docs: https://docs.stripe.com/mcp"
+      },
+      {
+        "app_name": "Plaid",
+        "detail": "Plaid docs reference a Plaid MCP Server, and community MCP servers also exist for Plaid sandbox integrations. Plaid additionally published an engineering blog about its internal MCP server. Community example: https://lobehub.com/nl/mcp/argotdev-plaid-mcp-ts"
+      },
+      {
+        "app_name": "Binance",
+        "detail": "Multiple unofficial community MCP servers exist for Binance, including https://github.com/AnalyticAce/binance-mcp-server and https://github.com/TermiX-official/binance-mcp. These support trading, market data, account management, and AI agent integrations via MCP."
+      },
+      {
+        "app_name": "QuickBooks",
+        "detail": "Official open-source MCP server exists at Intuit GitHub repository: https://github.com/intuit/quickbooks-online-mcp-server . It provides comprehensive QuickBooks Online API integration with CRUD operations for 29 entity types and 11 financial reports using MCP-compatible clients."
+      },
+      {
+        "app_name": "Xero",
+        "detail": "Official open-source MCP server exists at XeroAPI/xero-mcp-server. It bridges MCP with Xero APIs and supports accounting operations such as contacts, invoices, reports, bank transactions, and payroll. Available via GitHub and npm."
+      },
+      {
+        "app_name": "Brex",
+        "detail": "A community MCP server exists at https://github.com/crazyrabbitLTC/mcp-brex-server providing read-only Brex expense and transaction access for AI agents. MCP listings also appear on MCP Market: https://mcpmarket.com/server/brex"
+      },
+      {
+        "app_name": "Ramp",
+        "detail": "Community/third-party MCP servers exist for Ramp, including 'ramp-mcp' and Ramp Developer MCP listings. Ramp also published a blog post titled 'Building Ramp's MCP server'. Evidence: https://builders.ramp.com/post/ramp-mcp and https://mcpmarket.com/server/ramp-developer"
+      },
+      {
+        "app_name": "PitchBook",
+        "detail": "PitchBook announced a Model Context Protocol (MCP) connector integration with OpenAI/ChatGPT for subscribers, and third-party reporting describes PitchBook MCP apps available in ChatGPT."
+      },
+      {
+        "app_name": "NotebookLM",
+        "detail": "Multiple community MCP servers exist, including PleasePrompto/notebooklm-mcp and notebooklm-mcp-cli. They provide programmatic access to NotebookLM via browser automation and expose tools for notebook management, grounded chat, source ingestion, and audio generation. MCP directory listing: https://mcp.directory/servers/notebooklm ; GitHub: https://github.com/PleasePrompto/notebooklm-mcp"
+      },
+      {
+        "app_name": "Otter AI",
+        "detail": "Official Otter MCP Server documented by Otter Help Center with setup guides for Claude, ChatGPT, Cursor, Perplexity, and other AI tools. Includes tools overview and permissions configuration."
+      },
+      {
+        "app_name": "Fathom",
+        "detail": "Fathom provides an official MCP server at https://api.fathom.ai/mcp documented in their developer docs. Community MCP servers also exist, including https://github.com/Dot-Fun/fathom-mcp and https://www.npmjs.com/package/@lengelhard/fathom-mcp."
+      },
+      {
+        "app_name": "Consensus",
+        "detail": "Official remote MCP server documented at https://mcp.consensus.app/mcp. Supports connecting AI assistants to Consensus research search capabilities. MCP setup guide states OAuth authentication is required on first connection."
+      },
+      {
+        "app_name": "Reducto",
+        "detail": "Official Reducto MCP server documented by Reducto. Supports Claude Desktop, Claude Code, Codex, Cursor, VS Code, Windsurf, and other MCP clients for classify, parse, extract, split, and edit operations. Docs: https://docs.reducto.ai/mcp-server"
+      },
+      {
+        "app_name": "Devin",
+        "detail": "Devin is officially MCP-compatible via Devin's MCP Marketplace, allowing integration with MCP servers. Additionally, an official DeepWiki by Devin MCP server is listed at https://mcp.deepwiki.com/mcp."
+      },
+      {
+        "app_name": "Higgsfield",
+        "detail": "Both community and hosted MCP servers exist. Community server: https://github.com/geopopos/higgsfield_ai_mcp using HF_API_KEY and HF_SECRET. Hosted MCP endpoint reported at https://mcp.higgsfield.ai/mcp with OAuth authentication for Claude Code and compatible clients."
+      },
+      {
+        "app_name": "Mermaid CLI",
+        "detail": "Community MCP servers exist that wrap Mermaid CLI functionality, including https://github.com/andrewginns/mermaid-mcp-server and Mermaid Validator MCP listings on LobeHub and mcp.so. These servers validate and render Mermaid diagrams using Mermaid CLI."
+      },
+      {
+        "app_name": "YouTube Transcript",
+        "detail": "Multiple community MCP servers exist for YouTube transcript retrieval, including @fabriqa.ai/youtube-transcript-mcp on npm, kyong0612/youtube-mcp, and kimtaeyoon83/mcp-server-youtube-transcript on GitHub. These support fetching transcripts from YouTube videos for Claude Code/Desktop and other MCP clients. Sources: https://www.npmjs.com/package/@fabriqa.ai/youtube-transcript-mcp , https://mcpservers.org/servers/kyong0612/youtube-mcp , https://github.com/kimtaeyoon83/mcp-server-youtube-transcript"
+      },
+      {
+        "app_name": "Grain",
+        "detail": "Official Grain MCP server documented at https://developers.grain.com/mcp for accessing meeting data in Claude and other MCP clients. Community MCP server also exists at https://github.com/eadm/grain-mcp-server."
+      }
+    ]
+  },
+  "confidence": {
+    "mean": 0.88,
+    "low_confidence_apps": [
+      {
+        "app_name": "iPayX",
+        "confidence": 0.22
+      }
+    ]
+  }
+}
